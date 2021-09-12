@@ -2,7 +2,7 @@
   "name": "frontend-step2-education",
   "version": "1.0.0",
   "description": "Практическое задание по верстке и сборке проекта",
-  "main": "index.js",
+  "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -19,5 +19,8 @@
   "devDependencies": {
     "webpack": "^5.52.1",
     "webpack-cli": "^4.8.0"
+  },
+  "dependencies": {
+    "lodash": "^4.17.21"
   }
 }
