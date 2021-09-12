@@ -1,0 +1,19 @@
+{
+  "name": "frontend-step2-education",
+  "version": "1.0.0",
+  "description": "Практическое задание по верстке и сборке проекта",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sirartemis/frontend-step2-education.git"
+  },
+  "author": "Artem Snytko",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sirartemis/frontend-step2-education/issues"
+  },
+  "homepage": "https://github.com/sirartemis/frontend-step2-education#readme"
+}
