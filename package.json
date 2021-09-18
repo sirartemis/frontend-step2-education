@@ -23,10 +23,16 @@
   "devDependencies": {
     "express": "^4.17.1",
     "html-webpack-plugin": "^5.3.2",
+    "pug": "^3.0.2",
+    "pug-loader": "^2.4.0",
+    "sass": "^1.41.1",
+    "sass-loader": "^12.1.0",
     "webpack": "^5.52.1",
     "webpack-cli": "^4.8.0",
     "webpack-dev-middleware": "^5.1.0",
     "webpack-dev-server": "^4.2.0"
   },
-  "dependencies": {}
+  "dependencies": {
+    "jquery": "^3.6.0"
+  }
 }
