@@ -1,6 +1,2 @@
-import './style.scss'
+import './styles/main.scss'
 import "jquery"
-
-jQuery(document).ready(function($) {
-	$('body').css('background-color', 'orange');
-});
