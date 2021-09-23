@@ -1,7 +1,13 @@
 @import "colors";
+@import "fonts";
 
 
 body {
 	color: $dark-shade-75;
 	background-color: $green;
+
+	h1 {
+		font-family: 'Montserrat', sans-serif;
+		font-weight: bold;
+	}
 }
