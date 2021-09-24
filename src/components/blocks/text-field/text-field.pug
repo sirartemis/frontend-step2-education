@@ -1,4 +1,2 @@
-.text-field
-	label.text-field__label
-		h3 text field
-	input.text-field__input(type='text',placeholder='Email')
+mixin text-field(placeholder)
+	input.text-field(type='text' placeholder=placeholder)
