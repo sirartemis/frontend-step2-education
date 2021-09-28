@@ -5,9 +5,14 @@
 
 
 @import "../components/blocks/text-field/text-field";
+@import "../components/blocks/dropdown/dropdown";
 
 
 body {
+
+	box-sizing: border-box;
+
+
 	font-family: 'Montserrat', sans-serif;
 	font-style: normal;
 	font-weight: normal;

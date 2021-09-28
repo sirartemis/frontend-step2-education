@@ -1,0 +1,20 @@
+mixin dropdown(select, btns)
+	.dropdown
+		.select
+			span= select
+			span.material-icons expand_more
+		+dropdown-menu(btns)
+			block
+
+mixin dropdown-menu(btns= false)
+	.dropdown-menu
+
+		block
+
+		if btns
+			+dropdown-menu-btns()
+
+mixin dropdown-menu-btns()
+	.dropdown-menu-btns
+		input.clear(type='button' value='очистить')
+		input.execute(type='button' value='применить')

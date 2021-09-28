@@ -1,5 +1,8 @@
 include ../components/blocks/text-field/text-field.pug
 
+include ../components/blocks/dropdown/dropdown.pug
+
+
 doctype html
 html(lang="ru")
 	head
@@ -32,3 +35,16 @@ html(lang="ru")
 			img(src=require('../assets/img/logo-text.svg'))
 
 		+text-field('Email')
+		+text-field('Email')
+		+text-field('Email')
+		+text-field('Email')
+
+		- const guests = ['1','2']
+
+		+dropdown('Сколько гостей',btns= true)
+		+dropdown('Сколько гостей',btns= false)
+			h3(style='box-sizing: border-box;') this is dropdown menu!!
+
+			p 
+				| This is empty dropdown menu
+				| without buttons and inputs!!!
