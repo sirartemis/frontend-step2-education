@@ -45,8 +45,8 @@ html(lang="ru")
 
     - const guests = ['1','2']
 
-    +dropdown({ btns: true , select: 'Сколько гостей'})
-    +dropdown({ corners: true, select: 'Сколько гостей'})
+    +dropdown({ corners: true, btns: true, select: 'Сколько гостей'})
+      +number-field({ classID: 'adults', ilabel: 'взрослые' })
+      +number-field({ classID: 'children', ilabel: 'дети' })
+      +number-field({ classID: 'babies', ilabel: 'младенцы' })
 
-    +stretch-input({iplaceholder: 'hello', isize: '10' })
-    +number-field({ classID: 'adults', ilabel: 'взрослые' })
