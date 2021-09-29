@@ -1,20 +1,12 @@
-mixin dropdown(select, btns)
+include ./__select/__select.pug
+include ./__menu/__menu.pug
+
+mixin dropdown(options)
+
 	.dropdown
-		.select
-			span= select
-			span.material-icons expand_more
-		+dropdown-menu(btns)
-			block
-
-mixin dropdown-menu(btns= false)
-	.dropdown-menu
-
-		block
-
-		if btns
-			+dropdown-menu-btns()
-
-mixin dropdown-menu-btns()
-	.dropdown-menu-btns
-		input.clear(type='button' value='очистить')
-		input.execute(type='button' value='применить')
+		+dropdown-select(options)
+		if block
+			+dropdown-menu(options)
+				block
+		else
+			+dropdown-menu(options)

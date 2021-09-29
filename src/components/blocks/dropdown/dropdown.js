@@ -6,10 +6,10 @@ $('.material-icons').click( function (e) {
 	target.find('.material-icons').toggleClass('clicked');
 	target.parents('.dropdown').attr('tabindex', 1).focus();
 	target.parents('.dropdown').toggleClass('active');
-	target.parents('.dropdown').find('.dropdown-menu').slideToggle(300);
+	target.parents('.dropdown').find('.dropdown__menu').slideToggle(300);
 });
 
 $('.clicked').click( function () {
 	$('.dropdown').removeClass('active');
-	$('.dropdown').find('.dropdown-menu').slideUp(300);
+	$('.dropdown').find('.dropdown__menu').slideUp(300);
 });

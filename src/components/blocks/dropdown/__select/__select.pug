@@ -1,0 +1,9 @@
+mixin dropdown-select(options)
+
+  -
+    const { select,
+            corners } = options;
+
+  .dropdown__select(class=corners ? 'dropdown__select_border_with_sharp_corners' : '')
+    span= select
+    span.material-icons expand_more

@@ -1,0 +1,14 @@
+include ../__btns/__btns.pug
+
+mixin dropdown-menu(options)
+  -
+    const { btns, corners } = options;
+
+  .dropdown__menu(class=corners ? 'dropdown__menu_border_with_sharp_corners' : '')
+
+    if block
+      block
+    else
+      h3 this is empty menu!
+    if btns
+      +dropdown-btns()

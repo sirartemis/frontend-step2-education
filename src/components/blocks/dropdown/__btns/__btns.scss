@@ -1,0 +1,25 @@
+.dropdown__btns {
+
+	margin: 19px 7px 13px 14px;
+
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: space-between;
+
+	input {
+
+		padding: 0;
+
+		font-family: inherit;
+		text-transform: uppercase;
+		font-weight: bold;
+		font-size: 12px;
+		line-height: 15px;
+		color: #bc9cff;
+
+		border: none;
+		background-color: inherit;
+
+		cursor: pointer;
+	}
+}
