@@ -1,0 +1,15 @@
+mixin stretch-input(options = {})
+
+  -
+    const inputHandler = 'this.parentNode.dataset.value = this.value';
+
+    const { isize= '1',
+            iplaceholder= '0',
+            ivalue= '0'} = options;
+
+  .input-sizer
+    input(type='text'
+          onInput=inputHandler
+          size=isize
+          placeholder=iplaceholder
+          value=ivalue)

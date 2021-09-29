@@ -1,0 +1,12 @@
+@import './__label/__label';
+@import './__input/_input';
+
+.number-field {
+
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+  margin: 7px 7px 7px 15px;
+
+}

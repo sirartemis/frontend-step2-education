@@ -4,7 +4,7 @@
 
 	display: flex;
 	flex-flow: row nowrap;
-	justify-content: space-between;
+	justify-content: flex-end;
 
 	input {
 
@@ -22,4 +22,10 @@
 
 		cursor: pointer;
 	}
+}
+
+.clear {
+
+  display: none;
+
 }

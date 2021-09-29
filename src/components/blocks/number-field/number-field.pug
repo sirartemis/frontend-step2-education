@@ -1,0 +1,11 @@
+include ./__label/__label.pug
+include ./__input/__input.pug
+
+mixin number-field(options = {})
+  
+  -
+    const { classID } = options;
+
+  .number-field(class=classID)
+    +number-field-label(options)
+    +number-field-input(options)
