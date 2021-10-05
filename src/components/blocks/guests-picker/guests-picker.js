@@ -4,13 +4,15 @@ import { increaseInput, decreaseInput, enableMinus, disableMinus } from "../numb
 $('.dropdown').find('input').on('input', e => checkGuests(e));
 $('.dropdown').find('input').on('click', e => checkGuests(e));
 
-$('.dropdown').find('input').trigger('input');
-$('.dropdown').find('input').trigger('click');
+//$('.dropdown').find('input').trigger('input');
+//$('.dropdown').find('input').trigger('click');
 
 
 function clearInput(e) {
 
   let isClearButton = $(e.target).hasClass('clear');
+
+  let select = $(e.target).parents('.dropdown__menu').parent().find('.dropdown__select');
 
   if (isClearButton) {
 
@@ -22,12 +24,16 @@ function clearInput(e) {
     removeClearHandler(e);
     $(e.target).parents('.dropdown').find('.minus').addClass('disabled');
 
+    select.find('span').eq(0).text('Сколько гостей');
+
   }
 };
 
 
 
 function checkGuests(e) {
+
+  applyChanges(e);
 
   let increase = $(e.target).hasClass('plus');
   increase && increaseInput(e);
@@ -62,7 +68,7 @@ function checkGuests(e) {
     increase && adults && enableMinus(e);
     increase && children && enableMinus(e);
     increase && babies && enableMinus(e);
-    decrease && (curvall == 0) && disableMinus(e);
+    decrease && (curval == 0) && disableMinus(e);
     isInput && (curval > '0') && enableMinus(e);
 
   };
@@ -70,6 +76,52 @@ function checkGuests(e) {
   if ( res === 0 ) {
 
     removeClearHandler(e);
+
+  };
+};
+
+
+function applyChanges(e) {
+
+  let res = [];
+
+  let isExecute = $(e.target).hasClass('execute');
+
+  if (isExecute) {
+
+    let select = $(e.target).parents('.dropdown__menu').parent().find('.dropdown__select');
+
+    let menu = $(e.target).parents('.dropdown__menu');
+
+    res.push(menu.find('.adults').find('.input-sizer').find('input').val());
+    res.push(menu.find('.children').find('.input-sizer').find('input').val());
+    res.push(menu.find('.babies').find('.input-sizer').find('input').val());
+
+    let guests = res.reduce((sum, current) => sum + parseInt(current ? current : 0), 0);
+  guests = Math.round(guests);
+
+  let units = guests.toString().split('');
+  let l = units.length - 1;
+
+  let declination = ' гостей';
+
+  switch (units[l]) {
+    case '1' :
+      declination = ' гость';
+      break;
+    case '2':
+    case '3':
+    case '4':
+      declination = ' гостя';
+      break;
+    default:
+      declination = ' гостей';
+
+  }
+
+  if (units[l - 1] === '1') { declination = ' гостей' };
+
+  select.find('span').eq(0).text(guests + declination);
 
   };
 };

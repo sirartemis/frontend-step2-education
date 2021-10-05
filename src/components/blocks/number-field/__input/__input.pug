@@ -3,6 +3,6 @@ include ../../stretch-input/stretch-input.pug
 mixin number-field-input(options)
   
   .number-field__input
-    input.minus(type='button' value=' - ')
+    input.minus.disabled(type='button' value=' - ' disabled)
     +stretch-input(options)
     input.plus(type='button' value=' + ')
