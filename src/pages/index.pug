@@ -6,6 +6,8 @@ include ../components/blocks/stretch-input/stretch-input.pug
 
 include ../components/blocks/number-field/number-field.pug
 
+include ../components/blocks/guests-picker/guests-picker.pug
+
 
 doctype html
 html(lang="ru")
@@ -18,3 +20,6 @@ html(lang="ru")
       +number-field({ classID: 'adults', ilabel: 'взрослые' })
       +number-field({ classID: 'children', ilabel: 'дети' })
       +number-field({ classID: 'babies', ilabel: 'младенцы' })
+
+
+    +guests-picker()

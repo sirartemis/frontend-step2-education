@@ -1,0 +1,20 @@
+include ../dropdown/dropdown.pug
+
+include ../number-field/number-field.pug
+
+mixin guests-picker()
+  -
+    const options = {
+      corners: true,
+      btns: true,
+      select: 'Сколько гостей',
+      numberFields: {
+        adults: { classID: 'adults', ilabel: 'взрослые' },
+        children: { classID: 'children', ilabel: 'дети' },
+        babies: { classID: 'babies', ilabel: 'младенцы' }
+      }
+    }
+  +dropdown(options)
+    +number-field(options.numberFields.adults)
+    +number-field(options.numberFields.children)
+    +number-field(options.numberFields.babies)
