@@ -1,6 +1,3 @@
-import Cleave from 'cleave.js';
-import cleaveToJquery from './cleave-to-jquery.js';
-
 $('.numberInput').cleave({ numeral: true, numeralThousandGroupStyle: 'thousand', autoUnmask: true , delimiter: ' '});
 /*
 var numberInput = new Cleave('.numberInput', {

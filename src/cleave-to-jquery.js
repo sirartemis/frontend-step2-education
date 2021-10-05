@@ -1,3 +1,5 @@
+import Cleave from 'cleave.js';
+
 (function($, window, undefined){ 'use strict'
 
   $.fn.cleave = function(opts) {

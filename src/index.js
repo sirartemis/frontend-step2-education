@@ -1,5 +1,6 @@
 import './styles/main.scss'
 import "jquery"
+import cleaveToJquery from './cleave-to-jquery.js';
 
 
 import './components/blocks/number-field/number-field.js'
