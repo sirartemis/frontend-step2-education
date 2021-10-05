@@ -64,7 +64,7 @@ function checkGuests(e){
 
   let curval = $(e.target).parents('.number-field__input').find('.input-sizer').find('input').val();
 
-    (curval === '') && disableMinus(e);
+    ((curval === '') || (curval === '0')) && disableMinus(e);
   // Если хоть где-то добавился гость
 
   if ( res > 0 ) {
