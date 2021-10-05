@@ -1,3 +1,13 @@
+import Cleave from 'cleave.js';
+import cleaveToJquery from './cleave-to-jquery.js';
+
+$('.numberInput').cleave({ numeral: true, numeralThousandGroupStyle: 'thousand', autoUnmask: true , delimiter: ' '});
+/*
+var numberInput = new Cleave('.numberInput', {
+  numeral: true,
+  numeralThousandGroupStyle: 'thousand'
+});
+*/
 function increaseInput(e) {
 
   let targetInputSizer = $(e.target).parents('.number-field__input').find('.input-sizer');

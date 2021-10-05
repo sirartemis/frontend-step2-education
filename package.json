@@ -35,6 +35,7 @@
     "webpack-dev-server": "^4.2.0"
   },
   "dependencies": {
+    "cleave.js": "^1.6.0",
     "jquery": "^3.6.0"
   }
 }
