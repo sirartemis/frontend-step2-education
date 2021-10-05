@@ -13,37 +13,6 @@ html(lang="ru")
     meta(charset="utf-8")
     title Frontend-step2
   body
-    h1 Hello!
-    h2 Next one is the item title inside widgets
-    h3 this is a label or cta text
-
-    p 
-      This is the body text which is used for most
-      of the design, like paragraphs, lists, etc.
-
-    span.material-icons favorite_border
-    span.material-icons expand_more
-    span.material-icons arrow_back
-    span.material-icons arrow_forward
-    span.material-icons star_border
-    span.material-icons star
-    span.material-icons favorite
-
-    span.fab.fa-instagram.fa-2xl
-    span.fab.fa-twitter.fa-2xl
-    span.fab.fa-facebook-square.fa-2xl
-
-    p
-      img(src=require('../assets/img/logo.svg'))
-      img(src=require('../assets/img/logo-dark.svg'))
-      img(src=require('../assets/img/logo-text.svg'))
-
-    +text-field('Email')
-    +text-field('Email')
-    +text-field('Email')
-    +text-field('Email')
-
-    - const guests = ['1','2']
 
     +dropdown({ corners: true, btns: true, select: 'Сколько гостей'})
       +number-field({ classID: 'adults', ilabel: 'взрослые' })
