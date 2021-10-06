@@ -8,6 +8,8 @@ include ../components/blocks/number-field/number-field.pug
 
 include ../components/blocks/guests-picker/guests-picker.pug
 
+include ../components/blocks/masked-text-field/masked-text-field.pug
+
 
 doctype html
 html(lang="ru")
@@ -16,11 +18,5 @@ html(lang="ru")
     title Frontend-step2
   body
 
-  +dropdown({ select: 'еще один дропдаун' })
-    +number-field({ilabel: 'ванные'})
-    +number-field({ilabel: 'спальни'})
-    +guests-picker()
-  +dropdown({ select: 'и еще один дропдаун' })
-    +number-field({ilabel: 'ванные'})
-    +number-field({ilabel: 'спальни'})
-    +guests-picker()
+  +masked-text-field()
+  +masked-text-field({ iplaceholder: 'ММ.ДД.ГГГГ' })

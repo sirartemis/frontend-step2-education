@@ -1,2 +1,6 @@
-mixin text-field(placeholder)
-	input.text-field(type='text' placeholder=placeholder)
+mixin text-field(options = {})
+  -
+    const { classID= '',
+            iplaceholder= 'Email' } = options;
+
+  input.text-field(type='text' class=classID placeholder=iplaceholder)
