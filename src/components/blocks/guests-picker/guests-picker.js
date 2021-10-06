@@ -1,22 +1,20 @@
 import { removeClearHandler, addClearHandler } from "../dropdown/__btns/__btns";
 import { increaseInput, decreaseInput, enableMinus, disableMinus } from "../number-field/__input/__input";
 
+
 $('.dropdown').find('input').on('input', e => checkGuests(e));
 $('.dropdown').find('input').on('click', e => checkGuests(e));
-
-//$('.dropdown').find('input').trigger('input');
-//$('.dropdown').find('input').trigger('click');
 
 
 function clearInput(e) {
 
   let isClearButton = $(e.target).hasClass('clear');
 
-  let select = $(e.target).parents('.dropdown__menu').parent().find('.dropdown__select');
+  let select = $(e.target).parent().parent().parent().find('.dropdown__select');
 
   if (isClearButton) {
 
-    let target = $(e.target).parents('.dropdown').find('.input-sizer');
+    let target = $(e.target).parent().parent().parent().parent().find('.input-sizer');
 
     target.find('input').val('0');
     target.attr('data-value','0');
@@ -89,9 +87,9 @@ function applyChanges(e) {
 
   if (isExecute) {
 
-    let select = $(e.target).parents('.dropdown__menu').parent().find('.dropdown__select');
+    let select = $(e.target).parent().parent().parent().find('.dropdown__select');
 
-    let menu = $(e.target).parents('.dropdown__menu');
+    let menu = $(e.target).parent().parent();
 
     res.push(menu.find('.adults').find('.input-sizer').find('input').val());
     res.push(menu.find('.children').find('.input-sizer').find('input').val());
@@ -122,6 +120,36 @@ function applyChanges(e) {
   if (units[l - 1] === '1') { declination = ' гостей' };
 
   select.find('span').eq(0).text(guests + declination);
+
+  let babies = menu.find('.babies').find('.input-sizer').find('input').val();
+
+  units = babies.split('');
+
+  l = units.length - 1;
+
+  declination = ' младенцев';
+
+    switch (units[l]) {
+      case '1':
+        declination = ' младенец';
+        break;
+      case '2':
+      case '3':
+      case '4':
+        declination = ' младенца';
+        break;
+      default:
+        declination = ' младенцев';
+
+    }
+
+  if (units[l - 1] === '1') {declination = ' младенцев'};
+
+  let selectText = select.find('span').eq(0).text();
+
+  if (babies !== '0') { selectText = selectText + ', ' + babies + declination };
+
+  select.find('span').eq(0).text(selectText);
 
   };
 };

@@ -4,7 +4,8 @@
 
 .dropdown {
 	
-	width: 320px;
+//	width: 320px;
+min-width: 266px;
 
 	outline: none;
 	transition: all .5s ease;
@@ -13,7 +14,7 @@
 
 		overflow: hidden;
 		display: none;
-		overflow-y: auto;
+		overflow-y: hidden;
 		z-index: 9;
 	}
 }

@@ -16,10 +16,11 @@ html(lang="ru")
     title Frontend-step2
   body
 
-    +dropdown({ corners: true, btns: true, select: 'Сколько гостей'})
-      +number-field({ classID: 'adults', ilabel: 'взрослые' })
-      +number-field({ classID: 'children', ilabel: 'дети' })
-      +number-field({ classID: 'babies', ilabel: 'младенцы' })
-
-
+  +dropdown({ select: 'еще один дропдаун' })
+    +number-field({ilabel: 'ванные'})
+    +number-field({ilabel: 'спальни'})
+    +guests-picker()
+  +dropdown({ select: 'и еще один дропдаун' })
+    +number-field({ilabel: 'ванные'})
+    +number-field({ilabel: 'спальни'})
     +guests-picker()

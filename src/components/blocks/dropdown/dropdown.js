@@ -4,12 +4,12 @@ $('.material-icons').click( function (e) {
 
 	let target = $(e.target);
 	target.find('.material-icons').toggleClass('clicked');
-	target.parents('.dropdown').attr('tabindex', 1).focus();
-	target.parents('.dropdown').toggleClass('active');
-	target.parents('.dropdown').find('.dropdown__menu').slideToggle(300);
+	target.parent().parent().attr('tabindex', 1).focus();
+	target.parent().parent().toggleClass('active');
+	target.parent().parent().find('.dropdown__menu').slideToggle(300);
 });
 
-$('.clicked').click( function () {
-	$('.dropdown').removeClass('active');
-	$('.dropdown').find('.dropdown__menu').slideUp(300);
+$('.clicked').click( function (e) {
+	$(e.target).parent().parent().removeClass('active');
+	$(e.target).parent().parent().find('.dropdown__menu').slideUp(300);
 });
