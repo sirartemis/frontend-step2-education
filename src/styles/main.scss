@@ -19,8 +19,11 @@ body {
   align-items: center;
   justify-content: space-around;
 
-  height: 100vh;
+  min-height: 98vh;
   width: 100%;
+
+  overflow-x: hidden;
+  overflow-y: auto;
 
 	font-family: 'Montserrat', sans-serif;
 	font-style: normal;
