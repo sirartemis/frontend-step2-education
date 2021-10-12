@@ -1,5 +1,4 @@
 import './styles/main.scss'
-import "jquery"
 import './cleave-to-jquery.js';
 
 

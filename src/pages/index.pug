@@ -1,14 +1,6 @@
-include ../components/blocks/text-field/text-field.pug
-
-include ../components/blocks/dropdown/dropdown.pug
-
-include ../components/blocks/stretch-input/stretch-input.pug
-
-include ../components/blocks/number-field/number-field.pug
-
-include ../components/blocks/guests-picker/guests-picker.pug
-
 include ../components/blocks/masked-text-field/masked-text-field.pug
+
+include ../components/blocks/text-field/text-field.pug
 
 
 doctype html
@@ -19,4 +11,6 @@ html(lang="ru")
   body
 
   +masked-text-field()
+  +masked-text-field({ iplaceholder: 'ММ.ДД.ГГГГ' })
+  +masked-text-field({ iplaceholder: 'ММ.ДД.ГГГГ' })
   +masked-text-field({ iplaceholder: 'ММ.ДД.ГГГГ' })
