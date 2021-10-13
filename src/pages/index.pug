@@ -1,7 +1,4 @@
-include ../components/blocks/masked-text-field/masked-text-field.pug
-
-include ../components/blocks/text-field/text-field.pug
-
+include ../components/blocks/date-picker/date-picker.pug
 
 doctype html
 html(lang="ru")
@@ -10,7 +7,4 @@ html(lang="ru")
     title Frontend-step2
   body
 
-  +masked-text-field()
-  +masked-text-field({ iplaceholder: 'ММ.ДД.ГГГГ' })
-  +masked-text-field({ iplaceholder: 'ММ.ДД.ГГГГ' })
-  +masked-text-field({ iplaceholder: 'ММ.ДД.ГГГГ' })
+    +date-picker({btns: true})

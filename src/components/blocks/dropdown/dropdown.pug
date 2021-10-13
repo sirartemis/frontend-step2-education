@@ -1,12 +1,14 @@
 include ./__select/__select.pug
 include ./__menu/__menu.pug
 
+include ../date-picker/calendar/calendar.pug
+
 mixin dropdown(options = {})
 
-	.dropdown
-		+dropdown-select(options)
-		if block
-			+dropdown-menu(options)
-				block
-		else
-			+dropdown-menu(options)
+  .dropdown()
+    +dropdown-select(options)
+    if block
+      +dropdown-menu(options)
+        block
+    else
+      +dropdown-menu(options)

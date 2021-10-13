@@ -1,0 +1,7 @@
+include ../dropdown/dropdown.pug
+
+include ./calendar/calendar.pug
+
+mixin date-picker(options = {})
+  +dropdown(options)
+    +calendar(options)

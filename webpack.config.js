@@ -20,9 +20,9 @@ module.exports = {
 	entry: {
 		index: `${PATHS.src}/index.js`
 },
-	devtool: 'inline-source-map',
 	devServer: {
-		static: './dist',
+		static: `${PATHS.dist}`,
+    hot: true
 	},
 	plugins: [
 		...PAGES.map(page => new HtmlWebpackPlugin({
@@ -65,13 +65,20 @@ module.exports = {
 				}
 			},
 			{
-				test: /\.s[ac]ss$/i,
+				test: /\.((c|sa|sc)ss)$/i,
 				use: [
-					"style-loader",
-					"css-loader",
-					"sass-loader",
+          "style-loader",
+          {
+            loader: "css-loader",
+            options: {
+              importLoaders: 1,
+            },
+          },
+          {
+            loader: "sass-loader",
+          },
 				],
-			},
+      },
 			{
 				test: /\.(woff|woff2|eot|ttf|otf)$/i,
 				type: 'asset/resource',

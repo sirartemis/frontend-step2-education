@@ -84,8 +84,9 @@ function applyChanges(e) {
   let res = [];
 
   let isExecute = $(e.target).hasClass('execute');
+  let isGuestsPicker = $(e.target).parent().parent().parent().hasClass('guests-picker');
 
-  if (isExecute) {
+  if (isExecute && isGuestsPicker) {
 
     let select = $(e.target).parent().parent().parent().find('.dropdown__select');
 

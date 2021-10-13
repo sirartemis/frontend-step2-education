@@ -1,9 +1,15 @@
 
 .dropdown__menu {
 
+  display: none;
+
 	border: 1px solid $dark-shade-50;
 
 	border-radius: 4px;
+}
+
+.active {
+  display: block;
 }
 
 @import './_border_with_sharp_corners/_border_with_sharp_corners';
