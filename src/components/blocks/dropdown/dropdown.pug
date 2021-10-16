@@ -5,7 +5,10 @@ include ../date-picker/calendar/calendar.pug
 
 mixin dropdown(options = {})
 
-  .dropdown()
+  -
+    const { dropdownClass } = options;
+
+  .dropdown(class=dropdownClass)
     +dropdown-select(options)
     if block
       +dropdown-menu(options)

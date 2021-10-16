@@ -1,10 +1,15 @@
 include ../components/blocks/date-picker/date-picker.pug
+include ../components/blocks/guests-picker/guests-picker.pug
 
 doctype html
 html(lang="ru")
   head
     meta(charset="utf-8")
     title Frontend-step2
+    link(rel='stylesheet' href='styles.css')
   body
-
-    +date-picker({btns: true})
+    +guests-picker()
+    +guests-picker()
+    +guests-picker()
+    +guests-picker()
+    +guests-picker()

@@ -14,7 +14,7 @@ function clearInput(e) {
 
   if (isClearButton) {
 
-    let target = $(e.target).parent().parent().parent().parent().find('.input-sizer');
+    let target = $(e.target).parent().parent().parent().find('.input-sizer');
 
     target.find('input').val('0');
     target.attr('data-value','0');
