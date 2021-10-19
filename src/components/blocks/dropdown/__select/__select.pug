@@ -2,8 +2,28 @@ mixin dropdown-select(options)
 
   -
     const { select,
-            corners } = options;
+            corners,
+            doubleSelect } = options;
 
-  .dropdown__select(class=corners ? 'dropdown__select_border_with_sharp_corners' : '')
-    span= select
-    span.material-icons expand_more
+    setCorners = ' dropdown__select_border_with_sharp_corners';
+    classOfSelect = '';
+    corners && classOfSelect.concat(setCorners);
+
+  if (doubleSelect)
+    .dropdown__select.dropdown__select_double
+      .dropdown__select.first-select(class=classOfSelect)
+        if (Array.isArray(select))
+          input(type='text' readonly placeholder=select[0]) 
+        else
+          input(type='text' readonly placeholder=select)
+        span.material-icons expand_more
+      .dropdown__select.second-select(class=classOfSelect)
+        if (Array.isArray(select))
+          input(type='text' readonly placeholder=select[1])
+        else
+          input(type='text' readonly placeholder=select)
+        span.material-icons expand_more
+  else
+    .dropdown__select(class=classOfSelect)
+      span= select
+      span.material-icons expand_more

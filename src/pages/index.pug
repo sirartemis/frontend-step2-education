@@ -1,5 +1,4 @@
 include ../components/blocks/date-picker/date-picker.pug
-include ../components/blocks/guests-picker/guests-picker.pug
 
 doctype html
 html(lang="ru")
@@ -8,8 +7,5 @@ html(lang="ru")
     title Frontend-step2
     link(rel='stylesheet' href='styles.css')
   body
-    +guests-picker()
-    +guests-picker()
-    +guests-picker()
-    +guests-picker()
-    +guests-picker()
+    .center
+      +date-picker({btns: true,doubleSelect: true,select: ['ДД.ММ.ГГГГ','ДД.ММ.ГГГГ'],gap: true})

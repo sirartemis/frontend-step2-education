@@ -2,9 +2,19 @@ include ../__btns/__btns.pug
 
 mixin dropdown-menu(options)
   -
-    const { btns, corners } = options;
+    const { btns,
+            corners,
+            gap} = options;
 
-  .dropdown__menu(class=corners ? 'dropdown__menu_border_with_sharp_corners' : '')
+    let classOfMenu = '';
+
+    const setGap = ' dropdown__menu_with_gap';
+    const setCorners = ' dropdown__menu_border_with_sharp_corners';
+
+    if (gap) {classOfMenu = classOfMenu.concat(setGap)};
+    if (corners) {classOfMenu = classOfMenu.concat(setCorners)};
+
+  .dropdown__menu(class=classOfMenu)
 
     if block
       block

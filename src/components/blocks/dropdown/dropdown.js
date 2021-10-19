@@ -3,13 +3,20 @@
 $('.material-icons').click( function (e) {
 
 	let target = $(e.target);
+  let targetDropdown = target.parent().parent();
+  const isDouble = target.parent().parent().hasClass('dropdown__select_double');
+  if (isDouble) {targetDropdown = targetDropdown.parent()};
 	target.find('.material-icons').toggleClass('clicked');
-	target.parent().parent().attr('tabindex', 1).focus();
-	target.parent().parent().toggleClass('active');
-	target.parent().parent().find('.dropdown__menu').slideToggle(300);
+	targetDropdown.attr('tabindex', 1).focus();
+	targetDropdown.toggleClass('active');
+	targetDropdown.find('.dropdown__menu').slideToggle(300);
 });
 
 $('.clicked').click( function (e) {
-	$(e.target).parent().parent().removeClass('active');
-	$(e.target).parent().parent().find('.dropdown__menu').slideUp(300);
+  const target = $(e.target);
+  let targetDropdown = target.parent().parent();
+  const isDouble = target.parent().parent().hasClass('double');
+  if (isDouble) {targetDropdown = targetDropdown.parent()};
+	targetDropdown.removeClass('active');
+	targetDropdown.find('.dropdown__menu').slideUp(300);
 });

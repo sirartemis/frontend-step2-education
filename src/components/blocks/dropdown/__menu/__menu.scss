@@ -3,9 +3,11 @@
 
   display: none;
 
-	border: 1px solid $dark-shade-50;
-
+	border: 1px solid $dark-shade-25;
 	border-radius: 4px;
+
+  transition: all .3s ease-out;
+
 }
 
 .active {
@@ -13,3 +15,4 @@
 }
 
 @import './_border_with_sharp_corners/_border_with_sharp_corners';
+@import './_with_gap/_with_gap';

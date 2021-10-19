@@ -3,13 +3,28 @@
 
 	height: 44px;
 
-	border: 1px solid $dark-shade-50;
+	border: 1px solid $dark-shade-25;
 	border-radius: 4px;
 
 	display: flex;
 	flex-flow: row nowrap;
 	align-items: center;
 	justify-content: space-between;
+
+  .first-select, .second-select{
+    width: 150px;
+
+    input {
+      width: 80px;
+      border: none;
+      padding-left: 15px;
+      cursor: default;
+
+      ::placeholder {
+        color: $dark-shade-75;
+      }
+    }
+  }
 
 	span {
 
@@ -20,7 +35,7 @@
 	}
 
 	.material-icons {
-		color: $dark-shade-75;
+		color: $dark-shade-50;
 		font-size: 24px;
 		line-height: 24px;
 		cursor: pointer;
@@ -38,3 +53,4 @@
 }
 
 @import './_border_with_sharp_corners/_border_with_sharp_corners';
+@import './_double/double';

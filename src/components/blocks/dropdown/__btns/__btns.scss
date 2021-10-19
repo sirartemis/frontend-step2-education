@@ -1,7 +1,5 @@
 .dropdown__btns {
 
-	margin: 19px 7px 13px 14px;
-
 	display: flex;
 	flex-flow: row nowrap;
 	justify-content: flex-end;
@@ -9,6 +7,7 @@
 	input {
 
 		padding: 0;
+    margin: 20px;
 
 		font-family: inherit;
 		text-transform: uppercase;

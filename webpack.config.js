@@ -102,7 +102,7 @@ if (process.env.NODE_ENV === 'production') {
   });
 
   config.devServer = {
-    static: `${PATHS.dist}`
+    static: `${PATHS.src}`
   }
 };
 
