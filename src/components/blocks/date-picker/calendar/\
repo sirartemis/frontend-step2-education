@@ -112,6 +112,17 @@
     z-index: -1;
   }
 
+  .air-datepicker-cell.-current-.-focus-::before
+  {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(92, 196, 239, .1);
+    z-index: -1;
+    outline-color: transparent;
+  }
+
   .air-datepicker-cell.-current-.-focus-.-range-to-::before {
     content: '';
     position: absolute;
@@ -131,19 +142,5 @@
     background: rgba(92, 196, 239, .1);
     z-index: -1;
     outline: none;
-  }
-
-  .air-datepicker-cell.-current-.-in-range-::before {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: rgba(92, 196, 239, .1);
-    z-index: -1;
-  }
-
-  .air-datepicker-cell.-range-from-,
-  .air-datepicker-cell.-range-to- {
-    border: none;
   }
 }
