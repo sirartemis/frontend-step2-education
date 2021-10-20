@@ -1,4 +1,5 @@
 .calendar {
+  width: 320px;
   box-sizing: border-box;
   display: flex;
   flex-flow: column nowrap;
@@ -10,6 +11,8 @@
   box-sizing: border-box;
   margin: 20px 20px 0 20px;
 
+  width: 320px;
+
   --adp-day-cell-height: 40px;
   --adp-day-cell-width: 40px;
 
@@ -17,6 +20,10 @@
   --adp-color-other-month: rgba(31,32,65,0.25);
 
   --adp-background-color-hover: transparent;
+
+
+  font-size: 12px;
+  line-height: 14.63px;
 
   width: auto;
 
@@ -30,17 +37,24 @@
     color: $dark-shade-100;
   }
 
-  .air-datepicker-body--day-name {
-    height: 40px;
+  .air-datepicker-nav--action {
+    width: auto;
+  }
 
+  .air-datepicker-body--day-name {
+    height: 39.56px;
+    font-size: inherit;
     color: $purple;
     font-weight: bold;
-    font-size: 12px;
     line-height: 14.63px;
 
     text-transform: capitalize;
 
 
+  }
+
+  .air-datepicker-body--day-names {
+    margin: 8px 0 0px;
   }
 
   span.material-icons {
@@ -71,6 +85,6 @@
   
   .air-datepicker--content {
     padding: 0;
-    margin-top: 30px;
+    margin-top: 14px;
   }
-  }
+}
