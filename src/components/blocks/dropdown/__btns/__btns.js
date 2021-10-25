@@ -9,7 +9,6 @@ function addClearHandler(e) {
   let toggled = btns.hasClass('dropdown__btns_space_between');
 
   let disabled = (clearDisplayProperty !== 'block')
-
   disabled && clear.css("display","block");
 
   !toggled && btns.toggleClass('dropdown__btns_space_between');
@@ -35,4 +34,4 @@ function removeClearHandler(e) {
 
 }
 
-export { addClearHandler,removeClearHandler };
+// export { addClearHandler,removeClearHandler };

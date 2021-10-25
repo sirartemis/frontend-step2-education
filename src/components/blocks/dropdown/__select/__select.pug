@@ -16,13 +16,13 @@ mixin dropdown-select(options)
           input(type='text' readonly placeholder=select[0]) 
         else
           input(type='text' readonly placeholder=select)
-        span.material-icons expand_more
+        span.expand.material-icons expand_more
       .dropdown__select.second-select(class=classOfSelect)
         if (Array.isArray(select))
           input(type='text' readonly placeholder=select[1])
         else
           input(type='text' readonly placeholder=select)
-        span.material-icons expand_more
+        span.expand.material-icons expand_more
   else
     .dropdown__select(class=classOfSelect)
       span= select
