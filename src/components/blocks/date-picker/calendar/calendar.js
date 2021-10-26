@@ -17,10 +17,14 @@ calendars.forEach(calendar => {
   const dropDown = dropDownMenu.parentNode;
 
   const expandBtns = dropDown.querySelectorAll('.expand');
-  const firstSelect = dropDown.querySelector('.first-select');
-  const firstSelectInput = firstSelect.querySelector('input');
-  const secondSelect = dropDown.querySelector('.second-select');
-  const secondSelectInput = secondSelect.querySelector('input'); 
+  const isDoubleSelect = dropDown.querySelector('.dropdown__select').classList.contains('dropdown__select_double');
+  const firstSelect = isDoubleSelect && dropDown.querySelector('.first-select');
+  const firstSelectInput = isDoubleSelect && firstSelect.querySelector('input');
+  const secondSelect = isDoubleSelect && dropDown.querySelector('.second-select');
+  const secondSelectInput = isDoubleSelect && secondSelect.querySelector('input'); 
+  let select = dropDown.querySelector(('.dropdown__select input'));
+
+  console.log(isDoubleSelect);
 
   const clearButton = dropDown.querySelector('.clear');
   const executeButton = dropDown.querySelector('.execute');
@@ -39,9 +43,16 @@ calendars.forEach(calendar => {
     const firstDateString = dateToString(firstDate);
     const secondDateString = dateToString(secondDate);
 
+    if (isDoubleSelect === true) {
+  
     firstSelectInput.value = firstDateString;
     secondSelectInput.value = secondDateString;
 
+    } else {
+      
+    select.value = firstDateString + ' - ' + secondDateString;
+      
+    }
   });
 
   calendar.addEventListener('click', e => {
@@ -59,8 +70,13 @@ calendars.forEach(calendar => {
 
   clearButton.addEventListener('click', e => {
 
+    if (isDoubleSelect === true) {
+
     firstSelectInput.value = '';
     secondSelectInput.value = '';
+    } else {
+      select.value = '';
+    }
 
     cal.clear();
 

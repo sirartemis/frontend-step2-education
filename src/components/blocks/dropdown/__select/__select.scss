@@ -11,19 +11,28 @@
 	align-items: center;
 	justify-content: space-between;
 
-  .first-select, .second-select{
-    width: 150px;
-
-    input {
-      width: 80px;
+  input {
       border: none;
       padding-left: 15px;
       cursor: default;
+
+      font: inherit;
+      color: #1f2041;
+      opacity: 75%;
 
       ::placeholder {
         color: $dark-shade-75;
       }
     }
+
+  .first-select, .second-select{
+    width: 150px;
+
+    input {
+      width: 90px;
+    }
+
+    
   }
 
 	span {
@@ -54,3 +63,4 @@
 
 @import './_border_with_sharp_corners/_border_with_sharp_corners';
 @import './_double/double';
+@import './_width_266/width_266';

@@ -3,11 +3,14 @@ mixin dropdown-select(options)
   -
     const { select,
             corners,
-            doubleSelect } = options;
+            doubleSelect,
+            width_266} = options;
 
     setCorners = ' dropdown__select_border_with_sharp_corners';
+    setWidth266 = ' dropdown__select_width_266';
     classOfSelect = '';
-    corners && classOfSelect.concat(setCorners);
+    classOfSelect = corners ? classOfSelect.concat(setCorners) : classOfSelect;
+    classOfSelect = width_266 ? classOfSelect.concat(setWidth266) : classOfSelect;
 
   if (doubleSelect)
     .dropdown__select.dropdown__select_double
@@ -25,5 +28,5 @@ mixin dropdown-select(options)
         span.expand.material-icons expand_more
   else
     .dropdown__select(class=classOfSelect)
-      span= select
+      input(type='text' readonly placeholder=select) 
       span.material-icons expand_more
