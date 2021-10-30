@@ -24,8 +24,6 @@ calendars.forEach(calendar => {
   const secondSelectInput = isDoubleSelect && secondSelect.querySelector('input'); 
   let select = dropDown.querySelector(('.dropdown__select input'));
 
-  console.log(isDoubleSelect);
-
   const clearButton = dropDown.querySelector('.clear');
   const executeButton = dropDown.querySelector('.execute');
 
@@ -40,8 +38,12 @@ calendars.forEach(calendar => {
       return cal.formatDate(date,'dd.MM.yyyy')
     }
 
-    const firstDateString = dateToString(firstDate);
-    const secondDateString = dateToString(secondDate);
+    const dateToSingleSelect = date => {
+      return cal.formatDate(date, 'dd MMM');
+    }
+
+    const firstDateString = isDoubleSelect ? dateToString(firstDate) : dateToSingleSelect(firstDate);
+    const secondDateString = isDoubleSelect ? dateToString(secondDate) : dateToSingleSelect(secondDate);
 
     if (isDoubleSelect === true) {
   
@@ -90,9 +92,12 @@ calendars.forEach(calendar => {
 
     expandButton.addEventListener('click', e => {
 
-      if (firstSelectInput.value !== ''
+      if ((
+        firstSelectInput.value !== ''
        && secondSelectInput.value !== ''
+       || select.value !== '')
        && clearButtonToggled === false) {
+
 
       clearButton.style.display = 'block';
       btns.classList.add('dropdown__btns_space_between');
