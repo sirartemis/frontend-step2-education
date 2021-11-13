@@ -2,9 +2,51 @@ import { removeClearHandler, addClearHandler } from "../dropdown/__btns/__btns";
 import { increaseInput, decreaseInput, enableMinus, disableMinus } from "../number-field/__input/__input";
 
 
-$('.dropdown').find('input').on('input', e => checkGuests(e));
-$('.dropdown').find('input').on('click', e => checkGuests(e));
+$('.guests-picker').find('input').on('click', e => checkGuests(e));
 
+const guestsPickerHandler = (e) => {
+
+  const target = e.target;
+
+  const clearButton = target.classList.contains('clear');
+  const executeButton = target.classList.contains('execute');
+  
+  const fields = [
+      'adults',
+      'babies',
+      'children'
+    ];
+
+  const plus = target.classList.contains('plus');
+  plus && increaseInput(e);
+  const minus = target.classList.contains('minus');
+  minus && decreaseInput(e);
+
+  const executeAndClearHandler = () => {
+
+    
+    let fieldResult = 0;
+
+    const getFieldsResult = (field) => {
+
+      const fieldTarget = dropDown.querySelector('.' + field);
+      const fieldInputSizer = fieldTarget.querySelector('.input-sizer');
+      const fieldInputSizerInput = fieldInputSizer.querySelector('input');
+      let fieldInputSizerInputValue = fieldInputSizerInput.value;
+      if (fieldInputSizerInputValue === '' || fieldInputSizerInputValue === '0') {
+        disableMinus(e);
+      }
+      fieldResult += parseInt(fieldInputSizerInputValue);
+    }
+
+    fields.forEach(getFieldsResult);
+    console.log(fieldResult);
+
+  }
+
+  executeButton && executeAndClearHandler(); 
+
+}
 
 function clearInput(e) {
 
@@ -33,11 +75,14 @@ function checkGuests(e) {
 
   applyChanges(e);
 
+  guestsPickerHandler(e);
+
+  /*
   let increase = $(e.target).hasClass('plus');
-  increase && increaseInput(e);
+  //increase && increaseInput(e);
 
   let decrease = $(e.target).hasClass('minus');
-  decrease && decreaseInput(e);
+  //decrease && decreaseInput(e);
 
   let isInput = $(e.target).attr('type') === 'text';
 
@@ -57,25 +102,27 @@ function checkGuests(e) {
 
   let curval = $(e.target).parents('.number-field__input').find('.input-sizer').find('input').val();
 
-  ((curval === '') || (curval === '0')) && disableMinus(e);
+  //((curval === '') || (curval === '0')) && disableMinus(e);
 
   if ( res > 0 ) {
 
     addClearHandler(e);
     clearInput(e);
-    increase && adults && enableMinus(e);
-    increase && children && enableMinus(e);
-    increase && babies && enableMinus(e);
-    decrease && (curval == 0) && disableMinus(e);
-    isInput && (curval > '0') && enableMinus(e);
+    //increase && adults && enableMinus(e);
+    //increase && children && enableMinus(e);
+    //increase && babies && enableMinus(e);
+    //decrease && (curval == 0) && disableMinus(e);
+    //isInput && (curval > '0') && enableMinus(e);
 
   };
-
+  
   if ( res === 0 ) {
 
     removeClearHandler(e);
 
   };
+
+  */
 };
 
 

@@ -34,4 +34,4 @@ function removeClearHandler(e) {
 
 }
 
-// export { addClearHandler,removeClearHandler };
+export { addClearHandler,removeClearHandler };

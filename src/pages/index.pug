@@ -1,4 +1,5 @@
 include ../components/blocks/date-picker/date-picker.pug
+include ../components/blocks/guests-picker/guests-picker.pug
 
 doctype html
 html(lang="ru")
@@ -16,3 +17,5 @@ html(lang="ru")
       +date-picker({btns: true,select: 'ДД.ММ.ГГГГ - ДД.ММ.ГГГГ',width_266: true,gap: true})
     .center
       +date-picker({btns: true,select: 'ДД.ММ.ГГГГ - ДД.ММ.ГГГГ',width_266: true,gap: true})
+    .center
+      +guests-picker()
