@@ -43,6 +43,7 @@ calendars.forEach(calendar => {
     }
 
     const firstDateString = isDoubleSelect ? dateToString(firstDate) : dateToSingleSelect(firstDate);
+    console.log(firstDateString);
     const secondDateString = isDoubleSelect ? dateToString(secondDate) : dateToSingleSelect(secondDate);
 
     if (isDoubleSelect === true) {

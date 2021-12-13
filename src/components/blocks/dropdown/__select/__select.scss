@@ -12,18 +12,25 @@
 	justify-content: space-between;
 
   input {
+
+      &::placeholder {
+        color: $dark-shade-100;
+        text-transform: uppercase;
+      }
+
       border: none;
       padding-left: 15px;
       cursor: default;
+      text-transform: lowercase;
 
       font: inherit;
-      color: #1f2041;
+      color: $dark-shade-75;
       opacity: 75%;
 
-      ::placeholder {
-        color: $dark-shade-75;
-      }
+      
     }
+
+    
 
   .first-select, .second-select{
     width: 150px;
