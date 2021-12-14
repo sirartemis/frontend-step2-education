@@ -39,11 +39,10 @@ calendars.forEach(calendar => {
     }
 
     const dateToSingleSelect = date => {
-      return cal.formatDate(date, 'dd MMM');
+      return cal.formatDate(date, 'dd MMM').toLowerCase();
     }
 
     const firstDateString = isDoubleSelect ? dateToString(firstDate) : dateToSingleSelect(firstDate);
-    console.log(firstDateString);
     const secondDateString = isDoubleSelect ? dateToString(secondDate) : dateToSingleSelect(secondDate);
 
     if (isDoubleSelect === true) {

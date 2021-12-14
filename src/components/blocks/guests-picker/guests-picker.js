@@ -1,79 +1,199 @@
 import { removeClearHandler, addClearHandler } from "../dropdown/__btns/__btns";
 import { increaseInput, decreaseInput, enableMinus, disableMinus } from "../number-field/__input/__input";
 
+/*
+ * Доделать
+ 
+document.addEventListener('DOMContentLoaded', () => {
 
-$('.guests-picker').find('input').on('click', e => checkGuests(e));
+  let res = 0;
+
+  const guestsPickers = document.querySelectorAll('.guests-picker');
+  guestsPickers.forEach((guestPicker) => {
+
+    const fields = guestPicker.querySelectorAll('.numberInput');
+    fields.forEach((field) => {
+      res += parseInt(field.value);
+    });
+
+    (res > 0) && addClearHandler(e);
+  });
+
+
+})
+  */
+
+$('.guests-picker').find('input').on('click', e => guestsPickerHandler(e));
+
+// обработчик нажатия на инпуты компонента guests-picker
 
 const guestsPickerHandler = (e) => {
 
   const target = e.target;
 
-  const clearButton = target.classList.contains('clear');
-  const executeButton = target.classList.contains('execute');
-  
-  const fields = [
-      'adults',
-      'babies',
-      'children'
-    ];
+  const clearButton = target.classList.contains('clear'); // нажали на кнопку "очистить"
+  const executeButton = target.classList.contains('execute'); // нажали на кнопку "применить"
 
   const plus = target.classList.contains('plus');
-  plus && increaseInput(e);
+  plus && increaseInput(e); // если пользователь нажал на плюс, увеличиваем количество на 1
+
   const minus = target.classList.contains('minus');
-  minus && decreaseInput(e);
+  minus && decreaseInput(e); // аналогично с минусом
 
-  const executeAndClearHandler = () => {
+  // Ищем узел "dropdown". Так как при нажатиях
+  // на разные инпуты восхождение вверх по ДОМ-дереву разное для
+  // каждого случая, приходится использовать рекурсивный обход с условием
+  // пока не встретится узел с классом "dropdown"
 
+  let goal = false; // цель не достигнута пока - это условие цикла
+  let finder = target; // это ищейка - она содержит узел, на котором сейчас поиск
+  let breaker = 0; // автоматический стоп-кран для экстренной остановки цикла
+
+  while (goal != true) {
+    let parent = finder.parentNode; // родитель узла, который передает ищейка
+    goal = parent.classList.contains('dropdown'); // проверяем, есть ли у родителя нужный класс
+    finder = parent; // цель еще не достигнута, поднимаемся выше и ищем дальше
+    breaker++;
+
+    // думаю 1000 подъемов достаточно
     
-    let fieldResult = 0;
+    if (breaker > 1000) {goal = true};
+  }
 
-    const getFieldsResult = (field) => {
+  // при успешном нахождении цикл завершается
 
-      const fieldTarget = dropDown.querySelector('.' + field);
-      const fieldInputSizer = fieldTarget.querySelector('.input-sizer');
-      const fieldInputSizerInput = fieldInputSizer.querySelector('input');
-      let fieldInputSizerInputValue = fieldInputSizerInput.value;
-      if (fieldInputSizerInputValue === '' || fieldInputSizerInputValue === '0') {
-        disableMinus(e);
-      }
-      fieldResult += parseInt(fieldInputSizerInputValue);
+  const dropDown = finder; // теперь у нас есть dropdown, к которому мы можем обращаться
+
+  const select = dropDown.querySelector('.dropdown__select');
+  const selectInput = select.querySelector('input');
+
+  const fields = [ // список полей со значениями
+                   // которые можно перебирать в цикле
+
+      'adults',  // взрослые
+      'babies',  // младенцы
+      'children' // дети
+    ];
+
+  let inputSizersInputsOfFields = {}; // коллекция инпутов для
+                                      // выборки значений
+  let inputSizersOfFields = {}; // коллекция родителей для 
+                                // изменения атрибутов
+
+  // заполняем наши коллекции
+  // нужными адресами
+  // для дальнейших манипуляций
+
+  fields.forEach((field) => {
+    const fieldTarget = dropDown.querySelector('.' + field);
+    const fieldInputSizer = fieldTarget.querySelector('.input-sizer');
+    const fieldInputSizerInput = fieldInputSizer.querySelector('input');
+    inputSizersInputsOfFields[field] = fieldInputSizerInput; // помещяем инпуты в коллекцию
+    inputSizersOfFields[field] = fieldInputSizer; // помещяем их родителей в другую коллекцию
+  });
+
+
+  // функция очистки формы
+
+  const clear = () => {
+
+    // берем нашу коллекцию с инпутами, достаем их оттуда поочередно
+    // и меняем значение для каждого
+
+    Object.values(inputSizersInputsOfFields).forEach((field) => {field.value = '0'});
+
+    // то же самое делаем для их родителей
+
+    Object.values(inputSizersOfFields).forEach((inputSizer) => {inputSizer.setAttribute('data-value','0')});
+
+    // убираем кнопку "очистить"
+    
+    removeClearHandler(e);
+
+    // отключаем "минусы"
+
+    dropDown.querySelectorAll('.minus').forEach((minus) => {minus.classList.add('disabled')});
+
+    // Чистим результат заполнения формы
+
+    selectInput.value = '';
+
+  };
+
+  // Если нажата кнопка "очистить"
+  
+  clearButton && clear();
+
+  const execute = () => {
+
+    Object.values(inputSizersInputsOfFields).forEach((field) => {
+
+      fieldsResult += parseInt(field.value);
+    });
+
+    let units = fieldsResult.toString().split('');
+    let l = units.length - 1;
+
+    let declination = ' гостей';
+
+    switch (units[l]) {
+      case '1' :
+        declination = ' гость';
+        break;
+      case '2':
+      case '3':
+      case '4':
+        declination = ' гостя';
+        break;
+      default:
+        declination = ' гостей';
+
     }
 
-    fields.forEach(getFieldsResult);
-    console.log(fieldResult);
+  if (units[l - 1] === '1') {declination = ' гостей'};
 
-  }
+    selectInput.value = fieldsResult + declination;
 
-  executeButton && executeAndClearHandler(); 
+    let babies = inputSizersInputsOfFields['babies'].value;
 
-}
+    units = babies.split('');
+    l = units.length - 1;
+    declination = ' младенцев';
 
-function clearInput(e) {
+    switch (units[l]) {
+      case '1':
+        declination = ' младенец';
+        break;
+      case '2':
+      case '3':
+      case '4':
+        declination = ' младенца';
+        break;
+      default:
+        declination = ' младенцев';
 
-  let isClearButton = $(e.target).hasClass('clear');
+    }
 
-  let select = $(e.target).parent().parent().parent().find('.dropdown__select');
+    if (units[l - 1] === '1') {decliantion = ' младенцев'};
 
-  if (isClearButton) {
+    let selectText = selectInput.value;
 
-    let target = $(e.target).parent().parent().parent().find('.input-sizer');
 
-    target.find('input').val('0');
-    target.attr('data-value','0');
+    if (babies !== '0') {
+      selectText = selectText + ', ' + babies + declination 
+    };
 
-    removeClearHandler(e);
-    $(e.target).parents('.dropdown').find('.minus').addClass('disabled');
+    selectInput.value = selectText;
 
-    select.find('span').eq(0).text('Сколько гостей');
+  };
 
-  }
+  executeButton && execute();
+
 };
-
-
 
 function checkGuests(e) {
 
-  applyChanges(e);
+  //applyChanges(e);
 
   guestsPickerHandler(e);
 
@@ -167,7 +287,7 @@ function applyChanges(e) {
 
   if (units[l - 1] === '1') { declination = ' гостей' };
 
-  select.find('span').eq(0).text(guests + declination);
+  select.find('input').eq(0).val(guests + declination);
 
   let babies = menu.find('.babies').find('.input-sizer').find('input').val();
 
@@ -193,11 +313,11 @@ function applyChanges(e) {
 
   if (units[l - 1] === '1') {declination = ' младенцев'};
 
-  let selectText = select.find('span').eq(0).text();
+  let selectText = select.find('input').eq(0).val();
 
   if (babies !== '0') { selectText = selectText + ', ' + babies + declination };
 
-  select.find('span').eq(0).text(selectText);
+  select.find('input').eq(0).val(selectText);
 
   };
 };

@@ -15,17 +15,14 @@
 
       &::placeholder {
         color: $dark-shade-100;
-        text-transform: uppercase;
       }
 
       border: none;
       padding-left: 15px;
       cursor: default;
-      text-transform: lowercase;
 
       font: inherit;
       color: $dark-shade-75;
-      opacity: 75%;
 
       
     }
