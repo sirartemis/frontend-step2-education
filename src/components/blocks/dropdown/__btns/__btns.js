@@ -1,37 +1,39 @@
 function addClearHandler(e) {
 
-  let clear = $(e.target).parents('.dropdown__menu').find('.clear');
+  const target = e.currentTarget;
 
-  let btns = $(e.target).parents('.dropdown__menu').find('.dropdown__btns');
+  const clear = target.querySelector('.clear');
 
-  let clearDisplayProperty = clear.css("display");
+  const btns = target.querySelector('.dropdown__btns');
 
-  let toggled = btns.hasClass('dropdown__btns_space_between');
+  let toggled = btns.classList.contains('dropdown__btns_space_between');
 
-  let disabled = (clearDisplayProperty !== 'block')
-  disabled && clear.css("display","block");
+  let disabled = (clear.style.display !== 'block')
 
-  !toggled && btns.toggleClass('dropdown__btns_space_between');
+  if (disabled) {
+    clear.style.display = 'block';
+  };
 
-}
+  !toggled && btns.classList.add('dropdown__btns_space_between');
+
+};
 
 function removeClearHandler(e) {
 
-  let clear = $(e.target).parents('.dropdown__menu').find('.clear');
+  const target = e.currentTarget;
 
-  let btns = $(e.target).parents('.dropdown__menu').find('.dropdown__btns');
+  const clear = target.querySelector('.clear');
 
-  let clearDisplayProperty = clear.css("display");
+  const btns = target.querySelector('.dropdown__btns');
 
-  let toggled = btns.hasClass('dropdown__btns_space_between');
+  let toggled = btns.classList.contains('dropdown__btns_space_between');
 
+  if (clear.style.display !== 'none') {
+    clear.style.display = 'none';
+  };
 
-  if (clearDisplayProperty !== 'none') {
-    clear.css("display","none");
-  }
+  toggled && btns.classList.remove('dropdown__btns_space_between');
 
-  toggled && btns.removeClass('dropdown__btns_space_between');
-
-}
+};
 
 export { addClearHandler,removeClearHandler };

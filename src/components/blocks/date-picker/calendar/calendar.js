@@ -60,6 +60,7 @@ calendars.forEach(calendar => {
   calendar.addEventListener('click', e => {
     if (cal.selectedDates.length > 0) {
 
+      console.log(cal.selectedDates.length);
       if (clearButtonToggled === false) {
         clearButton.style.display = 'block';
         btns.classList.add('dropdown__btns_space_between');

@@ -1,35 +1,20 @@
 import { removeClearHandler, addClearHandler } from "../dropdown/__btns/__btns";
 import { increaseInput, decreaseInput, enableMinus, disableMinus } from "../number-field/__input/__input";
 
-/*
- * Доделать
- 
-document.addEventListener('DOMContentLoaded', () => {
+let fieldsResult = 0;
 
-  let res = 0;
-
-  const guestsPickers = document.querySelectorAll('.guests-picker');
-  guestsPickers.forEach((guestPicker) => {
-
-    const fields = guestPicker.querySelectorAll('.numberInput');
-    fields.forEach((field) => {
-      res += parseInt(field.value);
-    });
-
-    (res > 0) && addClearHandler(e);
-  });
-
-
-})
-  */
-
-$('.guests-picker').find('input').on('click', e => guestsPickerHandler(e));
+$('.guests-picker').on('click', e => guestsPickerHandler(e));
 
 // обработчик нажатия на инпуты компонента guests-picker
 
 const guestsPickerHandler = (e) => {
 
+  let isFieldsResultNotNull = fieldsResult != 0;
+  isFieldsResultNotNull && addClearHandler(e);
+
   const target = e.target;
+
+  const dropDown = e.currentTarget;
 
   const clearButton = target.classList.contains('clear'); // нажали на кнопку "очистить"
   const executeButton = target.classList.contains('execute'); // нажали на кнопку "применить"
@@ -40,30 +25,9 @@ const guestsPickerHandler = (e) => {
   const minus = target.classList.contains('minus');
   minus && decreaseInput(e); // аналогично с минусом
 
-  // Ищем узел "dropdown". Так как при нажатиях
-  // на разные инпуты восхождение вверх по ДОМ-дереву разное для
-  // каждого случая, приходится использовать рекурсивный обход с условием
-  // пока не встретится узел с классом "dropdown"
+  
 
-  let goal = false; // цель не достигнута пока - это условие цикла
-  let finder = target; // это ищейка - она содержит узел, на котором сейчас поиск
-  let breaker = 0; // автоматический стоп-кран для экстренной остановки цикла
-
-  while (goal != true) {
-    let parent = finder.parentNode; // родитель узла, который передает ищейка
-    goal = parent.classList.contains('dropdown'); // проверяем, есть ли у родителя нужный класс
-    finder = parent; // цель еще не достигнута, поднимаемся выше и ищем дальше
-    breaker++;
-
-    // думаю 1000 подъемов достаточно
-    
-    if (breaker > 1000) {goal = true};
-  }
-
-  // при успешном нахождении цикл завершается
-
-  const dropDown = finder; // теперь у нас есть dropdown, к которому мы можем обращаться
-
+  
   const select = dropDown.querySelector('.dropdown__select');
   const selectInput = select.querySelector('input');
 
@@ -88,9 +52,40 @@ const guestsPickerHandler = (e) => {
     const fieldTarget = dropDown.querySelector('.' + field);
     const fieldInputSizer = fieldTarget.querySelector('.input-sizer');
     const fieldInputSizerInput = fieldInputSizer.querySelector('input');
+    (fieldInputSizerInput.value != 0) && addClearHandler(e);
+    fieldsResult += parseInt((fieldInputSizerInput.value));
     inputSizersInputsOfFields[field] = fieldInputSizerInput; // помещяем инпуты в коллекцию
     inputSizersOfFields[field] = fieldInputSizer; // помещяем их родителей в другую коллекцию
   });
+
+
+  if (minus) {
+    (fieldsResult == 0) && removeClearHandler(e);
+  }
+
+  fieldsResult = 0;
+
+  const selectClicked = target.classList.contains('expand');
+
+  if (selectClicked) {
+
+    Object.values(inputSizersInputsOfFields).forEach(field => {
+
+      if (field.value != 0) {
+
+        const inputSizer = field.parentNode;
+        const numberInput = inputSizer.parentNode;
+        const minus = numberInput.querySelector('.minus');
+        minus.style.disabled = false;
+        minus.classList.remove('disabled');
+
+        addClearHandler(e);
+
+      }
+    });
+
+    (fieldsResult != 0) && addClearHandler(e);
+  };
 
 
   // функция очистки формы
@@ -118,6 +113,8 @@ const guestsPickerHandler = (e) => {
 
     selectInput.value = '';
 
+    fieldsResult = 0;
+
   };
 
   // Если нажата кнопка "очистить"
@@ -125,6 +122,8 @@ const guestsPickerHandler = (e) => {
   clearButton && clear();
 
   const execute = () => {
+
+    fieldsResult = 0;
 
     Object.values(inputSizersInputsOfFields).forEach((field) => {
 
@@ -183,7 +182,8 @@ const guestsPickerHandler = (e) => {
       selectText = selectText + ', ' + babies + declination 
     };
 
-    selectInput.value = selectText;
+    selectInput.value = fieldsResult != 0 ? selectText : '';
+    isFieldsResultNotNull && addClearHandler(e);
 
   };
 

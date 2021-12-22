@@ -1,10 +1,5 @@
 $('.numberInput').cleave({ numeral: true, numeralThousandGroupStyle: 'thousand', autoUnmask: true , delimiter: ' '});
-/*
-var numberInput = new Cleave('.numberInput', {
-  numeral: true,
-  numeralThousandGroupStyle: 'thousand'
-});
-*/
+
 function increaseInput(e) {
 
   let targetInputSizer = $(e.target).parents('.number-field__input').find('.input-sizer');
@@ -12,7 +7,7 @@ function increaseInput(e) {
   let targetInput = targetInputSizer.find('input');
 
   let i = targetInput.val();
-  i++;
+  ++i;
 
   (i > 0) && enableMinus(e);
 
@@ -29,7 +24,7 @@ function decreaseInput(e) {
 
   let i = targetInput.val();
 
-  (i > 0) &&  i-- ;
+  (i > 0) &&  --i ;
   (i === 0) &&  disableMinus(e);
 
 
