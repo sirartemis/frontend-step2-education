@@ -1,7 +1,3 @@
-@import './__select/__select';
-@import './__menu/__menu';
-@import './__btns/__btns';
-
 .dropdown {
 	
   width: 320px;
@@ -17,3 +13,6 @@
 		z-index: 9;
 	}
 }
+
+@import './__head/__head';
+@import './__body/__body';

@@ -1,0 +1,38 @@
+.text-field,
+.number-field,
+.time-field,
+.date-field {
+
+	box-sizing: border-box;
+
+	width: 320px;
+	min-height: 44px;
+
+	padding: 0;
+	padding-left: 15px;
+
+	background: #ffffff;
+	
+	border: 1px solid;
+	border-color: $dark-shade-25;
+	border-radius: 4px;
+
+	color: $dark-shade-25;
+	font-family: inherit;
+
+	&hover, &:focus {
+		
+		color: $dark-shade-75;
+		border-color: $dark-shade-50;
+		outline: none;
+	
+	}
+
+	&::placeholder {
+
+		color: $dark-shade-50;
+
+	}
+}
+
+@import './_without-border/without-border';

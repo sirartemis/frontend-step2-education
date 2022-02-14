@@ -1,0 +1,21 @@
+.clear-button {
+  padding: 0;
+  margin: 20px;
+
+  font-family: inherit;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 15px;
+  color: $purple;
+
+  border: none;
+  background-color: inherit;
+
+  cursor: pointer;
+
+}
+
+.js-clear-button_removed {
+  display: none;
+}

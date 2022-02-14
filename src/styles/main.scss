@@ -3,8 +3,6 @@
 @import "./fab/fontawesome";
 @import "./fab/brands";
 
-// AirDatePicker
-
 @import "./date-picker/objects";
 @import "./date-picker/datepicker";
 @import "./date-picker/datepickerNav";
@@ -14,12 +12,11 @@
 @import "./date-picker/datepickerButtons";
 @import "./date-picker/datepickerVars";
 
-
-@import "../components/blocks/text-field/text-field";
-@import "../components/blocks/dropdown/dropdown";
-@import "../components/blocks/stretch-input/stretch-input";
-@import "../components/blocks/number-field/number-field";
-@import "../components/blocks/date-picker/date-picker.scss";
+@import '../components/blocks/field/field';
+@import "../components/blocks/button/button";
+@import '../components/blocks/dropdown/dropdown';
+@import '../components/blocks/number-picker/number-picker';
+@import '../components/blocks/date-picker/date-picker';
 
 
 body {
@@ -31,7 +28,7 @@ body {
   align-items: center;
   justify-content: space-around;
 
-  min-height: 98vh;
+  min-height: 96vh;
   width: 100%;
 
   overflow-x: hidden;
@@ -66,10 +63,6 @@ body {
 		text-transform: uppercase;
 
 	}
-}
-
-.center {
-  min-height: 500px;
 }
 
 .material-icons {

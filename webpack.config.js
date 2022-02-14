@@ -1,8 +1,8 @@
-const webpack = require('webpack');
-const fs = require('fs');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const webpack = require("webpack");
+const fs = require("fs");
 
 const PATHS = {
 	src: path.join(__dirname, './src'),
@@ -14,7 +14,6 @@ const PAGES_DIR = `${PATHS.src}/pages/`;
 const PAGES = fs.readdirSync(PAGES_DIR).filter(filename => filename.endsWith('.pug'));
 
 const config = {
-  mode: 'development',
   externals: {
     path: PATHS
   },
@@ -22,10 +21,7 @@ const config = {
     index: `${PATHS.src}/index.js`,
   },
   plugins: [
-    ...PAGES.map(page => new HtmlWebpackPlugin({
-      template: `${PAGES_DIR}/${page}`,
-      filename: `./${page.replace(/\.pug/,'.html')}`
-    })),
+    new HtmlWebpackPlugin(),
     new webpack.ProvidePlugin({
       $: 'jquery',
       jQuery: 'jquery',
@@ -41,6 +37,7 @@ const config = {
     path: `${PATHS.dist}`,
     clean: true,
   },
+  resolve: { extensions: ["*",".js",".jsx"] },
   module: {
     rules: [
       {
@@ -57,6 +54,17 @@ const config = {
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
         type: 'asset/resource',
+      },
+      {
+        test: /\.(js|jsx)$/,
+        exclude: /(node_modules|bower_components)/,
+        loader: "babel-loader",
+        options: {
+          presets: ["@babel/preset-env"],
+          plugins: [
+            ["@babel/plugin-transform-react-jsx", { "pragma": "createElement", "pragmaFrag": "'fragment'" }]
+          ],
+        }
       },
     ]
   },
@@ -100,8 +108,9 @@ if (process.env.NODE_ENV === 'production') {
   });
 
   config.devServer = {
-    static: `${PATHS.src}`
+    static: `${PATHS.dist}`,
   }
-};
+
+}
 
 module.exports = config;

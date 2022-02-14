@@ -1,0 +1,22 @@
+.dropdown__body {
+
+  overflow: hidden;
+  width: 320px;
+  box-sizing: border-box;
+  opacity: 0;
+  position: relative;
+  transition: all .3s ease-out;
+  border: 1px solid $dark-shade-25;
+  border-radius: 4px;
+
+}
+
+.js-dropdown__body_expanded {
+  opacity: 1;
+}
+
+
+@import './__buttons/__buttons';
+@import './__buttons/_space-between';
+@import './_border-with-sharp-corners';
+@import './_with-gap';

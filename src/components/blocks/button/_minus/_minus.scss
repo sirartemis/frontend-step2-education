@@ -1,0 +1,14 @@
+.minus-button {
+  box-sizing: border-box;
+  width: 30px;
+  height: 30px;
+  border: 1px solid $dark-shade-25;
+  border-radius: 22px;
+  color: $dark-shade-50;
+  background: none;
+  cursor: pointer;
+}
+
+.minus-button_disabled {
+  opacity: 0.5;
+}

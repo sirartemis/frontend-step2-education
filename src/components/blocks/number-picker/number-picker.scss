@@ -1,0 +1,10 @@
+@import './__label/__label';
+@import './__right-side/__right-side';
+
+.number-picker {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+  margin: 7px 7px 7px 15px;
+}
