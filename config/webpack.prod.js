@@ -8,10 +8,9 @@ const {
 
 module.exports = merge(common, {
   mode: 'production',
-  pathPrefix: '/frontend-step2-education',
   output: {
     path: paths.build,
-    publicPath: '/',
+    publicPath: '/frontend-step2-education',
     filename: '[name].[contenthash].bundle.js',
   },
   module: {
