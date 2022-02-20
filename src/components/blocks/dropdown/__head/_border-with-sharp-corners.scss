@@ -1,3 +1,11 @@
+.dropdown__double-head {
+  .dropdown__second-head_border-with-sharp-corners,
+  .dropdown__first-head_border-with-sharp-corners,
+  .dropdown__head_border-with-sharp-corners {
+    border-radius: 4px 4px 0 0;
+  }
+}
+
 .dropdown__head_border-with-sharp-corners {
   border-radius: 4px 4px 0 0;
 }

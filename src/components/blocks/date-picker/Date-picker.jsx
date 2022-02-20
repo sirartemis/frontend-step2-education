@@ -2,60 +2,22 @@ import Dropdown from "../dropdown/Dropdown";
 import createElement from "../../../create-element";
 import AirDatepicker from "air-datepicker";
 import handlersMixin from "./handlers";
+import { defaultProps, doubleProps } from "./props";
 
 export default class DatePicker extends Dropdown {
-  constructor(blockName, props = {}, isNotSuper = false) {
-    super(blockName, props, isNotSuper);
+  constructor(type = 'default') {
+    if (type === 'default') {
+      super(defaultProps)
+    } else super(doubleProps);
     Object.assign(DatePicker.prototype, handlersMixin);
-    this.element = this.render(props);
-    this.makeCalendar();
-    this.handler = this.makeDefaultHandler();
-    this.datePickerHandler = this.makeDatePickerHandler();
-    this.element.addEventListener('click', () => this.datePickerCalendarHandler());
-    this.element.addEventListener('click', event => this.datePickerHandler(event));
-    this.element.addEventListener('click', event => this.handler(event));
-
-    return this.element;
-  }
-
-  checkProps(props = {}) {
-    this.checkHeadProps(props);
-    this.checkBodyProps(props);
-    this.head.field = props.head && props.head.field || {};
-    if (props.double) {
-      this.head.double = {
-        first: {
-          class: 'dropdown__first-head js-dropdown__first-head',
-          props: {
-            placeholder: 'ДД.ММ.ГГГГ',
-            withoutBorder: true,
-            readOnly: true,
-          }
-        },
-        second: {
-          class: 'dropdown__second-head js-dropdown__second-head',
-          props: {
-            placeholder: 'ДД.ММ.ГГГГ',
-            withoutBorder: true,
-            readOnly: true,
-          }
-        }
-      };
-    } else {
-      this.head.field.props = {
-        placeholder: 'ДД.ММ.ГГГГ - ДД.ММ.ГГГГ',
-        withoutBorder: true,
-      }
-    }
-    this.body.buttons = true;
-    this.body.class = `${this.body.class} ${this.body.baseClass}_with-gap` 
-    this.body.content = (
-      <div className={`${this.className}__calendar js-${this.className}__calendar`}></div>
-    )
+    this
+      .makeCalendar()
+      .addHandlers(this.datePickerHandlers);
+    this.body.content.addEventListener('click', event => this.datePickerCalendarHandler(event));
   }
 
   makeCalendar() {
-    this.calendar = new AirDatepicker(this.element.querySelector(`.js-${this.className}__calendar`), {
+    this.calendar = new AirDatepicker(this.props.body.content, {
       navTitles: {
         days: 'MMMM yyyy'
       },
@@ -63,6 +25,7 @@ export default class DatePicker extends Dropdown {
       nextHtml: "<span class='material-icons'>arrow_forward</span>",
       range: true,
     });
+    return this;
   }
 
   getFirstDate() {

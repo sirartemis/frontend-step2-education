@@ -1,12 +1,9 @@
-.text-field,
-.number-field,
-.time-field,
-.date-field {
+.field {
 
 	box-sizing: border-box;
 
 	width: 320px;
-	min-height: 44px;
+	height: 44px;
 
 	padding: 0;
 	padding-left: 15px;

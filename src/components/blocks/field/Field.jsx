@@ -1,55 +1,64 @@
-import Block from "../Block";
 import createElement from "../../../create-element";
-import Cleave from 'cleave.js';
+import Cleave from "cleave.js";
+import Block from "../Block";
 
 export default class Field extends Block {
-  constructor(blockName, props = {}) {
-    super(blockName);
-    this.placeholder = props.placeholder || '';
-    this.className = props.className || 'text-field';
-    this.type = props.type || 'text';
-    this.checkMask(props.mask);
-    this.checkBorder(props.withoutBorder);
-    this.element = this.render();
-    this.element.readOnly = props.readOnly || false;
-    return this.element;
+  constructor(props = {}) {
+    super(['field','js-field']);
+    this.props = props;
+    this.setters = {
+      'setMask': [this.props.mask],
+      'setWithoutBorderModifier': [this.props.withoutBorder],
+      'setPlaceholder': [this.props.placeholder],
+      'setReadOnly': [this.props.readOnly],
+    };
+    this
+      .applyProps(this.setters)
+      .setClassString(this,this.classList)
+      .render();
+  }
+
+  setMask(mask = false) {
+    if (mask !== false) {
+      this.mask = mask;
+      this.classList.add('masked');
+    }
+    return this;
+  }
+
+  setReadOnly(readOnly = false) {
+    this.readOnly = readOnly;
+    return this;
+  }
+
+  setWithoutBorderModifier(withoutBorderModifier = false) {
+    if (withoutBorderModifier !== false) this.classList.add('field_without-border');
+    return this;
+  }
+
+  setPlaceholder(placeholder = '') {
+    this.placeholder = placeholder;
+    return this;
+  }
+
+  applyReadOnly(element,readOnly = false) {
+    if (readOnly !== false) element.readOnly = readOnly;
+    return this;
+  }
+
+  applyCleave(element,mask) {
+    this.cleave = new Cleave(element,mask);
+    return this;
   }
 
   render() {
-    return ( <input type={ this.type }
-                    placeholder={ this.placeholder }
-                    className={`${this.className} ${this.blockName}`} /> );
+    this.element = (
+      <input type='text'
+             placeholder={this.placeholder}
+             className={this.classString} />
+    );
+    if (this.readOnly) this.applyReadOnly(this.element,this.readOnly);
+    if (this.mask) this.applyCleave(this.element, this.mask);
+    return this;
   }
-
-  cleave() {
-    if (this.mask !== undefined) {
-      return new Cleave(this.element, this.mask );
-    } else {
-      console.log( "This element don't has a mask. You must to add mask to the element");
-    }
-  }
-
-  checkType({ ...props }) {
-    const {
-      numeral = false,
-      date = false,
-      time = false,
-    } = props;
-    this.className = numeral && 'number-field' || date && 'date-field' || time && 'time-field';
-  }
-
-  checkMask(mask) {
-    if (mask) {
-    this.mask = mask;
-    this.checkType(mask);
-    this.className = `masked ${this.className}`;
-    this.cleave();
-    }  
-  }
-
-  checkBorder(prop) {
-    this.withoutBorder = prop;
-    this.withoutBorder === true && ( this.className = `${this.className} ${this.className}_without-border` );
-  }
-
 }

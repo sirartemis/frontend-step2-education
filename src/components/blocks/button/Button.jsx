@@ -1,68 +1,107 @@
-import Block from '../Block';
 import createElement from '../../../create-element';
+import Block from '../Block';
 
 export default class Button extends Block {
-  constructor(blockName, props = {}) {
-    super(blockName);
-    this.element = this.render(props);
-    this.isDisabled(props);
-
-    return this.element;
-  }
-
-  isDisabled(props = {}) {
-    this.disabled = props.disabled || false;
-    if (this.disabled === true) {
-      this.element.setAttribute('disabled', 'disabled');
-    }
-  }
-  render(props = {}) {
-    this.applyType(props);
-    return (
-      <button className={`${this.className} ${this.blockName}`}>{this.content}</button>
-    )
-  }
-
-  applyExpandProps() {
-    this.content = ( <span className='material-icons js-expand-button'>expand_more</span> );
-    this.className = 'expand-button js-expand-button';
-  }
-
-  applyClearProps() {
-    this.content = 'очистить';
-    this.className = 'clear-button js-clear-button js-clear-button_removed';
-  }
-
-  applyApplyProps() {
-    this.content = 'применить';
-    this.className = 'apply-button js-apply-button';
-  }
-
-  applyDefaultProps() {
-    this.content = 'button';
-    this.className = 'button js-button';
-  }
-
-  applyMinusProps() {
-    this.content = '-';
-    this.className = 'minus-button js-minus-button';
-  }
-
-  applyPlusProps() {
-    this.content = '+';
-    this.className = 'plus-button js-plus-button';
-  }
-
-  applyType(props = {}) {
-    this.type = props.type || 'default';
-    const types = {
-      expand: 'applyExpandProps',
-      clear: 'applyClearProps',
-      apply: 'applyApplyProps',
-      default: 'applyDefaultProps',
-      minus: 'applyMinusProps',
-      plus: 'applyPlusProps',
+  constructor(props = {}) {
+    super();
+    this.props = props;
+    this.setters = {
+      'setContent': [this.props.content],
+      'setType': [this.props.type],
+      'setDisabled': [this.props.disabled],
     };
-    Object.entries(types).map( ( [type, applyFunc] ) => (this.type === type) && this[applyFunc]() );
+    this.types = {
+      'expand': { 'setExpandButton': [] },
+      'clear': { 'setClearButton': [this.props.removed] },
+      'apply': { 'setApplyButton': [] },
+      'default': { 'setDefaultButton': [] },
+      'minus': { 'setMinusButton': [this.props.disabled] },
+      'plus': { 'setPlusButton': [] },
+    }
+    this
+      .applyProps(this.setters)
+      .setClassString(this,this.classList)
+      .render();
+  }
+
+  setType(choose) {
+    Object
+      .entries(this.types)
+      .map(([type, apply]) => choose === type && Object.entries(apply).map(([func,args]) => this[func](...args)));
+    return this;
+  }
+
+  setContent(content = 'button') {
+    this.content = content;
+    return this;
+  }
+
+  setDisabled(disabled = false) {
+    if (disabled === true) this.disabled = true;
+    return this;
+  }
+
+  setExpandButton() {
+    this.setContent(( 
+      <>
+        expand_more
+      </>
+    ));
+    this.classList.add('expand-button');
+    this.classList.add('js-expand-button');
+    this.classList.add('material-icons');
+    return this;
+  }
+
+  setClearButton(removed = false) {
+    this.setContent('очистить');
+    this.classList.add('clear-button');
+    this.classList.add('js-clear-button');
+    if (removed === true) this.classList.add('js-clear-button_removed');
+    return this;
+  }
+
+  setApplyButton() {
+    this.setContent('применить');
+    this.classList.add('apply-button');
+    this.classList.add('js-apply-button');
+    return this;
+  }
+
+  setDefaultButton() {
+    this.setContent('button');
+    this.classList.add('button');
+    this.classList.add('js-button');
+    return this;
+  }
+
+  setMinusButton(disabled = false) {
+    this.setContent('-');
+    this.classList.add('minus-button');
+    this.classList.add('js-minus-button');
+    if (disabled === true) this.classList.add('js-minus-button_disabled')
+    return this;
+  }
+
+  setPlusButton() {
+    this.setContent('+');
+    this.classList.add('plus-button');
+    this.classList.add('js-plus-button');
+    return this;
+  }
+
+  disable(element) {
+    element.disabled = true;
+    return this;
+  }
+
+  render() {
+    this.element = (
+      <button className={this.classString}>
+        {this.content}
+      </button>
+    )
+    if (this.disabled !== undefined) this.disable(this.element);
+    return this;
   }
 }

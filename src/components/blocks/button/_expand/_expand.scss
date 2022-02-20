@@ -8,18 +8,13 @@
   flex-flow: row nowrap;
   justify-content: center;
   align-items: center;
-
-  .material-icons {
-    color: $dark-shade-50;
-    font-size: 24px;
-    line-height: 24px;
-    cursor: pointer;
-    transition: all .3s ease-in-out;
-  }
+  color: $dark-shade-50;
+  font-size: 24px;
+  line-height: 24px;
+  cursor: pointer;
+  transition: all .3s ease-in-out;
 }
 
 .js-expand-button_rotated {
-  .material-icons {
     transform: rotate(180deg);
-  }
 }

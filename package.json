@@ -2,11 +2,17 @@
   "name": "frontend-step2-education",
   "version": "1.0.0",
   "description": "Практическое задание по верстке и сборке проекта",
-  "private": true,
+  "main": "index.js",
   "scripts": {
-    "start": "NODE_ENV='development' webpack serve --open",
-    "build": "NODE_ENV='production' webpack"
+    "start": "cross-env NODE_ENV=development webpack serve --config config/webpack.dev.js",
+    "build": "cross-env NODE_ENV=production webpack --config config/webpack.prod.js",
+    "lint": "eslint 'src/**/*.js' || true"
   },
+  "keywords": [
+    "Toxin",
+    "frontend",
+    "education project"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/sirartemis/frontend-step2-education.git"
@@ -24,16 +30,19 @@
     "@babel/preset-env": "^7.16.11",
     "babel-loader": "^8.2.3",
     "clean-webpack-plugin": "^4.0.0",
+    "copy-webpack-plugin": "^9.1.0",
+    "cross-env": "^7.0.3",
     "css-loader": "^6.4.0",
     "css-minimizer-webpack-plugin": "^3.1.1",
     "eslint": "^8.5.0",
     "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-import-resolver-webpack": "^0.13.2",
     "eslint-plugin-import": "^2.25.3",
     "html-webpack-plugin": "^5.3.2",
     "mini-css-extract-plugin": "^2.4.2",
+    "postcss": "^8.4.6",
     "postcss-loader": "^6.2.0",
-    "pug": "^3.0.2",
-    "pug-loader": "^2.4.0",
+    "postcss-preset-env": "^7.4.1",
     "sass": "^1.41.1",
     "sass-loader": "^12.1.0",
     "style-loader": "^3.2.1",

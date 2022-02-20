@@ -4,48 +4,36 @@ import makeDeclination from "../../../utils/make-declination";
 
 const handlersMixin = {
 
-  getGuestsPickerHandlers() {
-    return {
+  guestsPickerHandlers : {
       'js-clear-button': 'clearGuestsPickerHandler',
       'js-minus-button': 'minusGuestsPickerHandler',
       'js-apply-button': 'applyGuestsPickerHandler',
-    }
-  },
-
-  getGuestsPickerEventHandlers() {
-    return {
       'js-plus-button': 'plusGuestsPickerHandler',
-    }
-  },
+    },
 
-  applyGuestsPickerHandler() {
-    const declination = {
-      he: 'гость',
-      him: 'гостя',
-      their: 'гостей',
-    };
-    const babiesDeclination = {
-      he: 'младенец',
-      him: 'младенца',
-      their: 'младенцев',
-    };
+  applyGuestsPickerHandler(event) {
     const guestsCount = this.getSumOfValues();
-    const guests = `${guestsCount} ${makeDeclination(declination, guestsCount)}`;
-    const babiesCount = parseInt(this.element.querySelector('.js-babies .js-number-picker__value').innerHTML, 10);
-    const babies = (babiesCount !== 0 && `, ${babiesCount} ${makeDeclination(babiesDeclination, babiesCount)}`) || '';
-    this.element
-      .querySelector('.js-dropdown__head__field')
-      .value = `${guests}${babies}`;
+    const guestsDeclination = makeDeclination(this.props.declinations.guests, guestsCount);
+    const guests = `${guestsCount} ${guestsDeclination}`;
+    const babiesCount = this.props.babies.getNumericValue();
+    const babiesDeclination = makeDeclination(this.props.declinations.babies, babiesCount);
+    let babies = '';
+    if (babiesCount > 0) {
+      babies = `, ${babiesCount} ${babiesDeclination}`;
+    } else babies = '';
+    this.changeHeadFieldValue(`${guests}${babies}`);
+    return event;
   },
 
-  clearGuestsPickerHandler() {
+  clearGuestsPickerHandler(event) {
     Object.values(this.getAllValues())
       .map(value => value.innerHTML = '0');
     Object.values(this.getAllMinuses())
       .map(minus => disableMinus(minus));
     removeClearButton(this.element);
     this.getButtonsContainer().classList.remove('dropdown__body__buttons_space-between');
-    this.element.querySelector('.js-dropdown__head__field').value = 'Сколько гостей';
+    this.changeHeadFieldValue(this.props.head.field.props.placeholder);
+    return event;
   },
 
   plusGuestsPickerHandler(event) {
@@ -56,26 +44,16 @@ const handlersMixin = {
     if (parseInt(event.target.previousSibling.innerHTML, 10) > 0) {
       enableMinus(event.target.previousSibling.previousSibling);
     }
+    return event;
   },
 
-  minusGuestsPickerHandler() {
+  minusGuestsPickerHandler(event) {
     if (this.getSumOfValues() === 0) {
       removeClearButton(this.element);
       this.getButtonsContainer().classList.remove('dropdown__body__buttons_space-between');
     }
+    return event;
   },
-
-  applyGuestsPickerHandlers(event) {
-    Object.entries(this.getGuestsPickerHandlers())
-      .map(([target, applyFunc]) => event.target.classList.contains(target) && this[applyFunc]());
-    Object.entries(this.getGuestsPickerEventHandlers())
-      .map(([target, applyFunc]) => event.target.classList.contains(target) && this[applyFunc](event));
-  },
-
-  makeGuestsPickerHandler() {
-    const handler = event => this.applyGuestsPickerHandlers(event);
-    return handler;
-  }
 }
 
 export default handlersMixin;
