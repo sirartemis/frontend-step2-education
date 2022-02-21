@@ -11,7 +11,7 @@ module.exports = merge(common, {
   output: {
     path: paths.build,
     publicPath: '/frontend-step2-education',
-    filename: '[name].[contenthash].bundle.js',
+    filename: 'js/[name].[contenthash].bundle.js',
   },
   module: {
     rules: [
@@ -22,9 +22,11 @@ module.exports = merge(common, {
           {
             loader: 'css-loader',
             options: {
+              url: true,
+              import: true,
               importLoaders: 2,
               sourceMap: false,
-              modules: false,
+              modules: true,
             },
           },
           'postcss-loader',
@@ -36,7 +38,7 @@ module.exports = merge(common, {
   plugins: [
     // Extracts CSS into separate files
     new MiniCssExtractPlugin({
-      filename: '[name].[contenthash].css',
+      filename: 'styles/[name].[contenthash].css',
       chunkFilename: '[id].css',
     }),
   ],

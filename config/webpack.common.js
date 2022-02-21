@@ -42,10 +42,22 @@ module.exports = {
   module: {
     rules: [
       // Images: Copy image files to build folder
-      { test: /\.(?:ico|gif|png|jpg|jpeg)$/i, type: 'asset/resource' },
+      { 
+        test: /\.(?:ico|gif|png|jpg|jpeg)$/i, 
+        type: 'asset/resource',
+        generator: {
+          filename: 'assets/images/[hash][ext]',
+        }
+      },
 
       // Fonts and SVGs: inline files
-      { test: /\.(woff(2)?|eot|ttf|otf|svg)$/, type: 'asset/inline' },
+      { 
+        test: /\.(woff(2)?|eot|ttf|otf|svg)$/,
+        type: 'asset/resource',
+        generator: {
+          filename: 'assets/fonts/[hash][ext]',
+        },
+      },
 
       // Javascript: Use Babel to transpile Javascript files
       // Also Babel allows to preprocessing and templating HTML by JSX pragma's
