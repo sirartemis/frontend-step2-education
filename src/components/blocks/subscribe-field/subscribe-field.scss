@@ -1,0 +1,62 @@
+.subscribe-field {
+  box-sizing: border-box;
+  height: 44px;
+  width: 267px;
+  overflow: hidden;
+  padding: 0;
+  border: none;
+
+  .email-field {
+    width: 250px;
+    height: 40px;
+    padding: 0;
+    padding-left: 15px;
+    border: 1px solid;
+    border-color: $dark-shade-25;
+    border-radius: 4px;
+    transition: border-color .3s ease;
+    color: $dark-shade-25;
+    font-family: inherit;
+    font-size: 14px;
+    line-height: 24px;
+    outline: none;
+    transition: color .3s ease;
+
+    &::placeholder {
+      color: $dark-shade-50;
+    }
+
+    &:focus,&:hover {
+      color: $dark-shade-75;
+      border-color: $dark-shade-50;
+    }
+  }
+
+  .material-icons {
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    position: relative;
+    left: 83.3%;
+    top: -43px;
+    border: none;
+    transition: opacity .3s ease;
+    background: -webkit-gradient(linear, left top, left bottom, from(#6f8aec), to(#8BA4F9));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: initial;
+    opacity: 0.75;
+
+    &:hover,&:active {
+      opacity: 1;
+    }
+  }
+}
+
+.js-subscribe-field_on-input {
+    border-color: $dark-shade-50;
+
+    .email-field {
+      color: $dark-shade-75;
+    }
+  }

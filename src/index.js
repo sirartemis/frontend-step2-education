@@ -4,24 +4,24 @@ import DatePicker from './components/blocks/date-picker/Date-picker';
 import GuestsPicker from './components/blocks/guests-picker/Guests-picker';
 import Dropdown from './components/blocks/dropdown/Dropdown';
 import Field from './components/blocks/field/Field';
+import SubscribeField from './components/blocks/subscribe-field/Subscribe-field';
 
 const {
   dropdown = new Dropdown(),
   datePicker = new DatePicker(),
   doubleDatePicker = new DatePicker('double'),
   guestsPicker = new GuestsPicker(),
-  field = new Field(),
+  subscribeField = new SubscribeField(),
 } = {};
 
 const element = (
-  <div style='display: inherit; width: 90vw; justify-content: space-between'>
+  <div style='display: inherit; width: 90vw; flex-flow: row wrap; justify-content: space-between'>
     {dropdown.element}
     {datePicker.element}
     {doubleDatePicker.element}
     {guestsPicker.element}
-    {field.element}
-    HI hi hi
+    {subscribeField.element}
   </div>
 )
 
-document.body.append(element);
+document.body.append(datePicker.element);
