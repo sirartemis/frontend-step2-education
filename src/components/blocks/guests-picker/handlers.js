@@ -1,6 +1,6 @@
-import { addClearButton, removeClearButton } from "../button/_clear/_clear";
-import { disableMinus, enableMinus } from "../button/_minus/_minus";
-import makeDeclination from "../../../utils/make-declination";
+import { addClearButton, removeClearButton } from "blocks/button/_clear/_clear";
+import { disableMinus, enableMinus } from "blocks/button/_minus/_minus";
+import makeDeclination from "utils/make-declination";
 
 const handlersMixin = {
 

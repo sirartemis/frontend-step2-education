@@ -1,5 +1,5 @@
-import Block from '../Block';
-import createElement from '../../../create-element';
+import Block from 'blocks/Block';
+import createElement from 'createElement';
 
 export default class SubscribeField extends Block {
   constructor(props = {}) {

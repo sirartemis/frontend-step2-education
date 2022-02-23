@@ -1,5 +1,5 @@
-import NumberPicker from '../number-picker/Number-picker';
-import createElement from "../../../create-element";
+import NumberPicker from 'blocks/number-picker/Number-picker';
+import createElement from "createElement";
 
 const adults = new NumberPicker({ label: 'взрослые' });
 const children = new NumberPicker({ label: 'дети' });

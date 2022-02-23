@@ -1,6 +1,6 @@
-import Field from "../../field/Field";
-import Button from "../../button/Button";
-import createElement from "../../../../create-element";
+import Field from "blocks/field/Field";
+import Button from "blocks/button/Button";
+import createElement from "createElement";
 
 const headMixin = {
 

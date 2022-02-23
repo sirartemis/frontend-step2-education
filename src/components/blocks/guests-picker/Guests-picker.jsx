@@ -1,5 +1,5 @@
-import Dropdown from "../dropdown/Dropdown";
-import createElement from "../../../create-element";
+import Dropdown from "blocks/dropdown/Dropdown";
+import createElement from "createElement";
 import defaultProps from "./props";
 import handlersMixin from "./handlers";
 

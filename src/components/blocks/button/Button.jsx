@@ -1,5 +1,5 @@
-import createElement from '../../../create-element';
-import Block from '../Block';
+import createElement from 'createElement';
+import Block from 'blocks/Block';
 
 export default class Button extends Block {
   constructor(props = {}) {

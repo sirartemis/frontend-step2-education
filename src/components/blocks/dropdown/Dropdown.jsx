@@ -1,5 +1,5 @@
-import Block from "../Block";
-import createElement from "../../../create-element";
+import Block from "blocks/Block";
+import createElement from "createElement";
 import handlersMixin from "./handlers";
 import headMixin from './__head/mixin';
 import bodyMixin from "./__body/mixin";

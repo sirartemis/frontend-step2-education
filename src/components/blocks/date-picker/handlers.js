@@ -1,4 +1,4 @@
-import { addClearButton, removeClearButton } from "../button/_clear/_clear";
+import { addClearButton, removeClearButton } from "blocks/button/_clear/_clear";
 
 const handlersMixin = {
 

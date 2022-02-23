@@ -1,4 +1,4 @@
-import createElement from "../../../create-element";
+import createElement from "createElement";
 
 const defaultProps = {
   head: {

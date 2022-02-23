@@ -1,10 +1,10 @@
-import './styles/main.scss'
-import createElement from "./create-element";
-import DatePicker from './components/blocks/date-picker/Date-picker';
-import GuestsPicker from './components/blocks/guests-picker/Guests-picker';
-import Dropdown from './components/blocks/dropdown/Dropdown';
-import Field from './components/blocks/field/Field';
-import SubscribeField from './components/blocks/subscribe-field/Subscribe-field';
+import 'styles/main.scss'
+import createElement from "createElement";
+import DatePicker from 'blocks/date-picker/Date-picker';
+import GuestsPicker from 'blocks/guests-picker/Guests-picker';
+import Dropdown from 'blocks/dropdown/Dropdown';
+import Field from 'blocks/field/Field';
+import SubscribeField from 'blocks/subscribe-field/Subscribe-field';
 
 const {
   dropdown = new Dropdown(),

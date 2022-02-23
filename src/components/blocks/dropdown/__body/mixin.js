@@ -1,5 +1,5 @@
-import Button from "../../button/Button";
-import createElement from "../../../../create-element";
+import Button from "blocks/button/Button";
+import createElement from "createElement";
 
 const bodyMixin = {
 

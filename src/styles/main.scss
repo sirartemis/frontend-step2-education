@@ -12,12 +12,12 @@
 @import "./date-picker/datepickerButtons";
 @import "./date-picker/datepickerVars";
 
-@import '../components/blocks/field/field';
-@import "../components/blocks/button/button";
-@import '../components/blocks/dropdown/dropdown';
-@import '../components/blocks/number-picker/number-picker';
-@import '../components/blocks/date-picker/date-picker';
-@import '../components/blocks/subscribe-field/subscribe-field';
+@import 'blocks/field/field';
+@import "blocks/button/button";
+@import 'blocks/dropdown/dropdown';
+@import 'blocks/number-picker/number-picker';
+@import 'blocks/date-picker/date-picker';
+@import 'blocks/subscribe-field/subscribe-field';
 
 
 body {

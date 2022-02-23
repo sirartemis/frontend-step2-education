@@ -1,5 +1,5 @@
-import Dropdown from "../dropdown/Dropdown";
-import createElement from "../../../create-element";
+import Dropdown from "blocks/dropdown/Dropdown";
+import createElement from "createElement";
 import AirDatepicker from "air-datepicker";
 import handlersMixin from "./handlers";
 import { defaultProps, doubleProps } from "./props";

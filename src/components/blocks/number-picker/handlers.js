@@ -1,4 +1,4 @@
-import { disableMinus, enableMinus } from "../button/_minus/_minus";
+import { disableMinus, enableMinus } from "blocks/button/_minus/_minus";
 
 const handlersMixin = {
 

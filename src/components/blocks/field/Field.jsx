@@ -1,6 +1,6 @@
-import createElement from "../../../create-element";
+import createElement from "createElement";
 import Cleave from "cleave.js";
-import Block from "../Block";
+import Block from "blocks/Block";
 
 export default class Field extends Block {
   constructor(props = {}) {

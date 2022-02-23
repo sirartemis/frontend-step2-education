@@ -1,4 +1,5 @@
 const {
+  path = require('path'),
   CopyWebpackPlugin = require('copy-webpack-plugin'),
   HtmlWebpackPlugin = require('html-webpack-plugin'),
   paths = require('./paths'),
@@ -80,7 +81,11 @@ module.exports = {
     extensions: ['.js','.jsx','.json'],
     alias: {
       '@': paths.src,
+      createElement: 'utils/create-element',
       assets: paths.public,
+      utils: '@/utils',
+      blocks: '@/components/blocks',
+      styles: '@/styles',
     },
   },
 }

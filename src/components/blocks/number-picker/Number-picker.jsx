@@ -1,6 +1,6 @@
-import Block from "../Block";
-import Button from "../button/Button";
-import createElement from "../../../create-element";
+import Block from 'blocks/Block';
+import Button from "blocks/button/Button";
+import createElement from "createElement";
 import handlersMixin from "./handlers";
 
 export default class NumberPicker extends Block {
