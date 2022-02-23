@@ -18,10 +18,6 @@ export default class GuestsPicker extends Dropdown {
     return this.element.querySelectorAll('.js-minus-button');
   }
 
-  getButtonsContainer() {
-    return this.element.querySelector('.js-dropdown__body__buttons');
-  }
-
   getSumOfValues() {
     let result = [];
     Object.values(this.getAllValues()).map(value => result.push(parseInt(value.innerHTML, 10)));

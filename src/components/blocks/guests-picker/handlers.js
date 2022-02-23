@@ -21,7 +21,7 @@ const handlersMixin = {
     if (babiesCount > 0) {
       babies = `, ${babiesCount} ${babiesDeclination}`;
     } else babies = '';
-    this.changeHeadFieldValue(`${guests}${babies}`);
+    this.head.field.element.value = `${guests}${babies}`;
     return event;
   },
 
@@ -31,15 +31,15 @@ const handlersMixin = {
     Object.values(this.getAllMinuses())
       .map(minus => disableMinus(minus));
     removeClearButton(this.element);
-    this.getButtonsContainer().classList.remove('dropdown__body__buttons_space-between');
-    this.changeHeadFieldValue(this.props.head.field.props.placeholder);
+    this.body.buttons.classList.remove('dropdown__body__buttons_space-between');
+    this.head.field.element.value = this.props.head.field.props.placeholder;
     return event;
   },
 
   plusGuestsPickerHandler(event) {
     if (this.getSumOfValues() > 0) {
       addClearButton(this.element);
-      this.getButtonsContainer().classList.add('dropdown__body__buttons_space-between');
+      this.body.buttons.classList.add('dropdown__body__buttons_space-between');
     }
     if (parseInt(event.target.previousSibling.innerHTML, 10) > 0) {
       enableMinus(event.target.previousSibling.previousSibling);
@@ -50,7 +50,7 @@ const handlersMixin = {
   minusGuestsPickerHandler(event) {
     if (this.getSumOfValues() === 0) {
       removeClearButton(this.element);
-      this.getButtonsContainer().classList.remove('dropdown__body__buttons_space-between');
+      this.body.buttons.classList.remove('dropdown__body__buttons_space-between');
     }
     return event;
   },

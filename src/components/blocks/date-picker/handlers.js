@@ -17,7 +17,7 @@ const handlersMixin = {
     }
     this.calendar.clear();
     removeClearButton(this.element);
-    this.getButtonsContainer().classList.remove('dropdown__body__buttons_space-between');
+    this.body.buttons.classList.remove('dropdown__body__buttons_space-between');
     return event;
   },
 
@@ -34,7 +34,7 @@ const handlersMixin = {
   datePickerCalendarHandler(event) {
     if (this.getSelectedDatesCount() > 0) {
       addClearButton(this.element);
-      this.getButtonsContainer().classList.add('dropdown__body__buttons_space-between');
+      this.body.buttons.classList.add('dropdown__body__buttons_space-between');
     } 
     return event;
   },

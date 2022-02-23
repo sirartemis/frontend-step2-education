@@ -2,6 +2,7 @@ import createElement from "../../../create-element";
 
 const defaultProps = {
   head: {
+    width: '266',
     field: {
       props: {
         withoutBorder: true,

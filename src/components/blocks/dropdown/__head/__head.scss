@@ -1,6 +1,5 @@
 .dropdown__head {
 
-  width: 266px;
 	height: 44px;
 
 	border: 1px solid $dark-shade-25;
@@ -33,5 +32,7 @@
   }
 }
 
+@import './_width-266';
+@import './_width-320';
 @import './_double-head';
 @import './_border-with-sharp-corners';

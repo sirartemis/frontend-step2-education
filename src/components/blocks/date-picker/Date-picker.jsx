@@ -51,8 +51,4 @@ export default class DatePicker extends Dropdown {
   dateForSingleHead(date) {
     return this.calendar.formatDate(date, 'dd MMM').toLowerCase();
   }
-
-  getButtonsContainer() {
-    return this.element.querySelector('.js-dropdown__body__buttons');
-  }
 }

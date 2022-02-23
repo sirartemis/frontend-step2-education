@@ -24,4 +24,4 @@ const element = (
   </div>
 )
 
-document.body.append(datePicker.element);
+document.body.append(guestsPicker.element);

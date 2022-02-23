@@ -4,11 +4,6 @@ import createElement from "../../../../create-element";
 
 const headMixin = {
 
-  changeHeadFieldValue(value) {
-    this.head.field.element.value = value;
-    return this;
-  },
-
   rotateExpandButton(event = false) {
     const rotatedClass = 'js-expand-button_rotated';
     if (event === false) {
@@ -65,12 +60,18 @@ const headMixin = {
       this.headSetters = {
         'setSharpCornersForHead': [head.sharpCorners],
         'setFieldForHead': [head.field],
+        'setWidth': [head.width],
       };
     }
     this.applyProps(this.headSetters);
     if (this.head.double) { 
       this.setClassString(this.head.double, this.head.double.classList)
     } else this.setClassString(this.head, this.head.classList);
+    return this;
+  },
+
+  setWidth(width = '320') {
+    width && this.head.classList.add(`dropdown__head_width-${width}`);
     return this;
   },
 
