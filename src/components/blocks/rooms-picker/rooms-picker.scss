@@ -1,0 +1,14 @@
+.js-alt {
+  opacity: 0;
+  transition: opacity .3s ease;
+  background-color: $purple;
+  color: #eee;
+  font-weight: bold;
+  padding: 5px;
+  border-radius: 4px;
+  z-index: 2;
+}
+
+.js-alt_active {
+  opacity: 1;
+}

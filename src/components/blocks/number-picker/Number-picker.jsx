@@ -11,6 +11,7 @@ export default class NumberPicker extends Block {
     this.setters = {
       'setLabel': [this.props.label],
       'setValue': [this.props.value],
+      'setMinusDisabled': [this.props.minusDisabled],
     };
     this.handlers = {};
     this
@@ -30,6 +31,11 @@ export default class NumberPicker extends Block {
   setValue(value = '0') {
     this.value = {};
     this.value.content = value;
+    return this;
+  }
+
+  setMinusDisabled(disabled = true) {
+    this.minusDisabled = disabled;
     return this;
   }
 
@@ -62,7 +68,7 @@ export default class NumberPicker extends Block {
         {this.label.content}
       </span>
     );
-    this.minus= new Button({ type: 'minus', disabled: true });
+    this.minus= new Button({ type: 'minus', disabled: this.minusDisabled });
     this.value.element = (
       <span className='number-picker__value js-number-picker__value'>
         {this.value.content}

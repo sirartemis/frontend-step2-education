@@ -11,11 +11,17 @@ export default class Field extends Block {
       'setWithoutBorderModifier': [this.props.withoutBorder],
       'setPlaceholder': [this.props.placeholder],
       'setReadOnly': [this.props.readOnly],
+      'setValue': [this.props.value],
     };
     this
       .applyProps(this.setters)
       .setClassString(this,this.classList)
       .render();
+  }
+
+  setValue(value = '') {
+    this.value = value;
+    return this;
   }
 
   setMask(mask = false) {
@@ -55,7 +61,9 @@ export default class Field extends Block {
     this.element = (
       <input type='text'
              placeholder={this.placeholder}
-             className={this.classString} />
+             className={this.classString}
+             value={this.value}
+      />
     );
     if (this.readOnly) this.applyReadOnly(this.element,this.readOnly);
     if (this.mask) this.applyCleave(this.element, this.mask);

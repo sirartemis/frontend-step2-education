@@ -5,6 +5,7 @@ import GuestsPicker from 'blocks/guests-picker/Guests-picker';
 import Dropdown from 'blocks/dropdown/Dropdown';
 import Field from 'blocks/field/Field';
 import SubscribeField from 'blocks/subscribe-field/Subscribe-field';
+import RoomsPicker from 'blocks/rooms-picker/Rooms-picker';
 
 const {
   dropdown = new Dropdown(),
@@ -12,16 +13,7 @@ const {
   doubleDatePicker = new DatePicker('double'),
   guestsPicker = new GuestsPicker(),
   subscribeField = new SubscribeField(),
+  roomsPicker = new RoomsPicker(),
 } = {};
 
-const element = (
-  <div style='display: inherit; width: 90vw; flex-flow: row wrap; justify-content: space-between'>
-    {dropdown.element}
-    {datePicker.element}
-    {doubleDatePicker.element}
-    {guestsPicker.element}
-    {subscribeField.element}
-  </div>
-)
-
-document.body.append(guestsPicker.element);
+document.body.append(roomsPicker.element);

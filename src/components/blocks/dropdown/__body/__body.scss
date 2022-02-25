@@ -1,7 +1,6 @@
 .dropdown__body {
 
   overflow: hidden;
-  width: 320px;
   box-sizing: border-box;
   opacity: 0;
   position: relative;
@@ -20,3 +19,4 @@
 @import './__buttons/_space-between';
 @import './_border-with-sharp-corners';
 @import './_with-gap';
+@import './_width';

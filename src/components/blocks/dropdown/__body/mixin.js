@@ -24,6 +24,7 @@ const bodyMixin = {
     this.setClassList(this.body,['dropdown__body','js-dropdown__body'])
     this.body.setters = {
       'setButtonsForBody': [body.buttons],
+      'setWidthForBody': [body.width],
       'setSharpCornersForBody': [body.sharpCorners],
       'setGapForBody': [body.gap],
       'setContentForBody': [body.content],
@@ -37,6 +38,11 @@ const bodyMixin = {
 
   setBodyExpanded(expanded = false) {
     this.body.expanded = expanded;
+    return this;
+  },
+
+  setWidthForBody(width = '320') {
+    this.body.classList.add(`dropdown__body_width-${width}`);
     return this;
   },
 
