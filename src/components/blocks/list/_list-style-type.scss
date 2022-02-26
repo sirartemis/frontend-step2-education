@@ -1,0 +1,17 @@
+.list_style-type-none {
+  list-style-type: none;
+}
+
+.list_style-type-bullet {
+  list-style-type: none;
+  li {
+    &::before {
+      content: ".";
+      color: $dark-shade-25;
+      font-size: 54px;
+      font-weight: bold;
+      margin-left: -1em;
+      padding-right: 10.43px;
+    }
+  }
+}

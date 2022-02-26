@@ -15,6 +15,7 @@ export default class Dropdown extends Block {
     this.props = props;
     this.setters = {
       'setSharpCornersForAll': [this.props.sharpCorners],
+      'setWithoutBorderForAll': [this.props.withoutBorder],
       'setHead': [this.props.head],
       'setBody': [this.props.body],
     };
@@ -29,6 +30,11 @@ export default class Dropdown extends Block {
 
   setSharpCornersForAll(sharpCorners = false) {
     this.sharpCorners = sharpCorners;
+    return this;
+  }
+
+  setWithoutBorderForAll(withoutBorder = false) {
+    this.withoutBorder = withoutBorder;
     return this;
   }
 

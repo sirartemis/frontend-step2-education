@@ -61,12 +61,18 @@ const headMixin = {
         'setSharpCornersForHead': [head.sharpCorners],
         'setFieldForHead': [head.field],
         'setWidth': [head.width],
+        'setHeadWithoutBorder': [this.withoutBorder],
       };
     }
     this.applyProps(this.headSetters);
     if (this.head.double) { 
       this.setClassString(this.head.double, this.head.double.classList)
     } else this.setClassString(this.head, this.head.classList);
+    return this;
+  },
+
+  setHeadWithoutBorder(withoutBorder) {
+    if (withoutBorder === true) this.head.classList.add('dropdown__head_without-border');
     return this;
   },
 

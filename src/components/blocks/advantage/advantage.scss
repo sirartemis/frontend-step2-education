@@ -1,0 +1,24 @@
+.advantage {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: start;
+  align-items: center;
+  padding-bottom: 17px;
+  border-bottom: 1px solid $dark-shade-10;
+
+  .advantage__icon {
+    height: 48px;
+    width: 48px;
+    font-size: 48px;
+    padding-right: 10px;
+    background: -webkit-gradient(linear, left top, left bottom, from(#6f8aec), to(#8BA4F9));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: initial;
+
+  }
+
+  .advantage__rich {
+    font-weight: bold;
+  }
+}

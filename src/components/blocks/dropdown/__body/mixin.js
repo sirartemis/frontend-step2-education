@@ -29,10 +29,16 @@ const bodyMixin = {
       'setGapForBody': [body.gap],
       'setContentForBody': [body.content],
       'setBodyExpanded': [body.expanded],
+      'setBodyWithoutBorder': [this.withoutBorder],
     };
     this
       .applyProps(this.body.setters)
       .setClassString(this.body,this.body.classList);
+    return this;
+  },
+
+  setBodyWithoutBorder(withoutBorder) {
+    if (withoutBorder === true) this.body.classList.add('dropdown__body_without-border');
     return this;
   },
 
