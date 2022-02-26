@@ -12,11 +12,35 @@ export default class Field extends Block {
       'setPlaceholder': [this.props.placeholder],
       'setReadOnly': [this.props.readOnly],
       'setValue': [this.props.value],
+      'setTextTransform': [this.props.textTransform],
+      'setColor': [this.props.color],
+      'setFontWeight': [this.props.fontWeight],
+      'setWithoutLeftPadding': [this.props.withoutLeftPadding],
     };
     this
       .applyProps(this.setters)
       .setClassString(this,this.classList)
       .render();
+  }
+
+  setWithoutLeftPadding(without = false) {
+    if (without === true) this.classList.add('field_without-left-padding');
+    return this;
+  }
+
+  setFontWeight(weight = 'normal') {
+    this.classList.add(`field_font-weight-${weight}`);
+    return this;
+  }
+
+  setColor(color = 'dark-shade-75') {
+    this.classList.add(`field_with-color-${color}`);
+    return this;
+  }
+
+  setTextTransform(transform = 'none') {
+    this.classList.add(`field_text-transform-${transform}`);
+    return this;
   }
 
   setValue(value = '') {

@@ -1,1 +1,9 @@
 @import './_list-style-type';
+
+.list {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+@import './with-left-padding';

@@ -1,7 +1,7 @@
 import createElement from 'createElement';
 import Block from 'blocks/Block';
 
-export default class Button extends Block {
+export default class Checkbox extends Block {
   constructor(id, props = {}) {
     super(['checkbox','js-checkbox']);
     this.id = id;
@@ -20,9 +20,11 @@ export default class Button extends Block {
   setRich(rich = false) {
     if (rich) {
       this.rich = (
+        <>
         <span className='checkbox__rich js-checkbox__rich'>
           {rich}
-        </span>
+        </span><br/>
+        </>
       )
     } else this.rich = '';
     return this;
@@ -43,11 +45,11 @@ export default class Button extends Block {
       <div className={this.classString}>
       <input id={this.id} type='checkbox' />
       <label for={this.id}>
-        {this.rich}<br />
+        {this.rich}
         {this.label}
       </label>
       </div>
     )
-    if (this.checked) this.element.checked = this.checked;
+    if (this.checked) this.element.querySelector('input').checked = this.checked;
   }
 }

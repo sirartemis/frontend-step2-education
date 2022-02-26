@@ -8,11 +8,17 @@ export default class List extends Block {
     this.setters = {
       'setItems': [this.props.items],
       'setListStyleType': [this.props.listStyleType],
+      'setLeftPadding' : [this.props.leftPadding],
     };
     this
       .applyProps(this.setters)
       .setClassString(this,this.classList)
       .render();
+  }
+
+  setLeftPadding(padding = false) {
+    if (padding === true) this.classList.add('list_with-left-padding');
+    return this;
   }
 
   setListStyleType(lst = 'none') {
@@ -21,15 +27,14 @@ export default class List extends Block {
   }
 
   setItems(items = { '1' : 'Empty list' }) {
+    this.items = {};
     Object.entries(items)
       .map(([key, item]) => {
-        this.items = {};
         this.items[key] = (
           <li className={`${key} js-${key}`}>
             {item}
           </li>
         );
-        return this;
       });
     return this;
   }

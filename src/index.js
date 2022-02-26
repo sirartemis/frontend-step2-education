@@ -9,6 +9,8 @@ import RoomsPicker from 'blocks/rooms-picker/Rooms-picker';
 import List from 'blocks/list/List';
 import Checkbox from 'blocks/checkbox/Checkbox';
 import Advantage from 'blocks/advantage/Advantage';
+import ExpandableCheckboxList from 'blocks/expandable-checkbox-list/Expandable-checkbox-list';
+import AdvantageList from 'blocks/advantages-list/Advantages-list';
 
 const {
   dropdown = new Dropdown({ withoutBorder: true }),
@@ -20,6 +22,9 @@ const {
   list = new List({ listStyleType: 'bullet' }),
   advantage = new Advantage({ rich: 'Комфорт', content: 'Шумопоглощающие стены' }),
   checkbox = new Checkbox('checkbox_1', { label: 'Можно курить', rich: 'Широкий коридор' }),
+  expandableCheckboxList = new ExpandableCheckboxList(),
+  advantagesList = new AdvantageList(),
 } = {};
 
-document.body.append(roomsPicker.element);
+document.body.append(expandableCheckboxList.element);
+document.body.append(advantagesList.element);

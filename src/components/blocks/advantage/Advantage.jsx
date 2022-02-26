@@ -16,17 +16,21 @@ export default class Advantage extends Block {
       .render();
   }
 
-  setIcon(icon = ( <span className='advantage__icon js-advantage__icon material-icons'>thumb_up</span> )) {
-    this.icon = icon;
+  setIcon(icon = 'thumb_up') {
+    this.icon =  (
+      <span className='advantage__icon js-advantage__icon material-icons'>{icon}</span> 
+    )
     return this;
   }
 
-  setRich(rich = '') {
-    this.rich = (
+  setRich(rich = false) {
+    if (rich) {
+      this.rich = (
       <span className='advantage__rich js-advantage__rich'>
         {rich}
       </span>
-    );
+      );
+    } else this.rich = '';
     return this;
   }
 
