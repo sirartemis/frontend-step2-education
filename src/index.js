@@ -11,6 +11,7 @@ import Checkbox from 'blocks/checkbox/Checkbox';
 import Advantage from 'blocks/advantage/Advantage';
 import ExpandableCheckboxList from 'blocks/expandable-checkbox-list/Expandable-checkbox-list';
 import AdvantageList from 'blocks/advantages-list/Advantages-list';
+import RadioGroup from 'blocks/radio-group/Radio-group';
 
 const {
   dropdown = new Dropdown({ withoutBorder: true }),
@@ -24,7 +25,8 @@ const {
   checkbox = new Checkbox('checkbox_1', { label: 'Можно курить', rich: 'Широкий коридор' }),
   expandableCheckboxList = new ExpandableCheckboxList(),
   advantagesList = new AdvantageList(),
+  radioGroup = new RadioGroup('gender'),
 } = {};
 
-document.body.append(expandableCheckboxList.element);
+document.body.append(radioGroup.element);
 document.body.append(advantagesList.element);

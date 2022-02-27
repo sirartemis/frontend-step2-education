@@ -1,6 +1,7 @@
 const {
   merge = require('webpack-merge').merge,
   common = require('./webpack.common'),
+  path = require('path'),
 } = {};
 
 module.exports = merge(common, {
@@ -9,6 +10,9 @@ module.exports = merge(common, {
 
   // Spin up a server for quick development
   devServer: {
+    static: {
+      directory: path.join(__dirname, 'dist'),
+    },
     historyApiFallback: true,
     open: true,
     compress: true,
