@@ -12,6 +12,7 @@ import Advantage from 'blocks/advantage/Advantage';
 import ExpandableCheckboxList from 'blocks/expandable-checkbox-list/Expandable-checkbox-list';
 import AdvantageList from 'blocks/advantages-list/Advantages-list';
 import RadioGroup from 'blocks/radio-group/Radio-group';
+import ToggleButton from 'blocks/toggle-button/Toggle-button';
 
 const {
   dropdown = new Dropdown({ withoutBorder: true }),
@@ -23,10 +24,11 @@ const {
   list = new List({ listStyleType: 'bullet' }),
   advantage = new Advantage({ rich: 'Комфорт', content: 'Шумопоглощающие стены' }),
   checkbox = new Checkbox('checkbox_1', { label: 'Можно курить', rich: 'Широкий коридор' }),
+  tumbler = new ToggleButton('tumbler', { label: 'Получать спецпредложения', toggle: true }),
   expandableCheckboxList = new ExpandableCheckboxList(),
   advantagesList = new AdvantageList(),
   radioGroup = new RadioGroup('gender'),
 } = {};
 
-document.body.append(radioGroup.element);
-document.body.append(advantagesList.element);
+document.body.append(tumbler.element);
+document.body.append(checkbox.element);
