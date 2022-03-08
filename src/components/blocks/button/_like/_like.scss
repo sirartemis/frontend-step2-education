@@ -1,0 +1,50 @@
+.like-button-wrapper {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  border: 1px solid $dark-shade-25;
+  border-radius: 20px;
+  width: 39px;
+  height: 19px;
+  cursor: pointer;
+
+  .like-button {
+    box-sizing: border-box;
+    appearance: none;
+    border: none;
+    background: transparent;
+    font-size: 10px;
+    line-height: 9px;
+    color: $dark-shade-25;
+    cursor: pointer;
+    transition: font-size .3s ease;
+  }
+
+  span {
+    font-size: 10px;
+    color: $dark-shade-25;
+  }
+}
+
+.js-like-button-wrapper_clicked {
+  border-color: $purple;
+
+  .js-like-button {
+    background: -webkit-linear-gradient(180deg, #bc9cff, #8BA4F9);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: initial;
+  }
+
+  span {
+    color: $purple;
+  }
+}
+
+.js-like-button-wrapper_hover {
+  border-color: $purple;
+
+  .js-like-button {
+    font-size: 11px;
+  }
+}

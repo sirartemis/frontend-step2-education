@@ -13,6 +13,8 @@ import ExpandableCheckboxList from 'blocks/expandable-checkbox-list/Expandable-c
 import AdvantageList from 'blocks/advantages-list/Advantages-list';
 import RadioGroup from 'blocks/radio-group/Radio-group';
 import ToggleButton from 'blocks/toggle-button/Toggle-button';
+import Button from 'blocks/button/Button';
+import RateButton from 'blocks/rate-button/Rate-button';
 
 const {
   dropdown = new Dropdown({ withoutBorder: true }),
@@ -28,7 +30,8 @@ const {
   expandableCheckboxList = new ExpandableCheckboxList(),
   advantagesList = new AdvantageList(),
   radioGroup = new RadioGroup('gender'),
+  button = new Button({ type: 'like', count: 12 }),
+  rateButton = new RateButton(),
 } = {};
 
-document.body.append(tumbler.element);
-document.body.append(checkbox.element);
+document.body.append(rateButton.element);

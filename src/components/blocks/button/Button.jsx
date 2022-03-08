@@ -1,10 +1,12 @@
 import createElement from 'createElement';
 import Block from 'blocks/Block';
+import likeButtonMixin from './_like/_like';
 
 export default class Button extends Block {
   constructor(props = {}) {
     super();
     this.props = props;
+    this.handlers = {};
     this.setters = {
       'setContent': [this.props.content],
       'setType': [this.props.type],
@@ -17,11 +19,19 @@ export default class Button extends Block {
       'default': { 'setDefaultButton': [] },
       'minus': { 'setMinusButton': [this.props.disabled] },
       'plus': { 'setPlusButton': [] },
+      'like': { 'setLikeButton': [this.props.count] },
     }
     this
       .applyProps(this.setters)
       .setClassString(this,this.classList)
       .render();
+    if (this.props.type === 'like') {
+      Object.assign(Button.prototype, likeButtonMixin);
+      this.addHandlers(this.likeButtonHandlers);
+      this.element.addEventListener('click', event => this.handler(event));
+      this.element.addEventListener('mouseover', event => this.likeButtonMouseOverHandler(event));
+      this.element.addEventListener('mouseout', event => this.likeButtonMouseOutHandler(event));
+    }
   }
 
   setType(choose) {
@@ -38,6 +48,19 @@ export default class Button extends Block {
 
   setDisabled(disabled = false) {
     if (disabled === true) this.disabled = true;
+    return this;
+  }
+
+  setLikeButton(count = '0') {
+    this.setContent((
+      <>
+        favorite_border
+      </>
+    ));
+    this.classList.add('like-button');
+    this.classList.add('js-like-button');
+    this.classList.add('material-icons');
+    this.count = count;
     return this;
   }
 
@@ -96,11 +119,23 @@ export default class Button extends Block {
   }
 
   render() {
-    this.element = (
+    if (this.props.type === 'like') {
+      const count = this.count || '';
+      this.element = (
+        <div className='like-button-wrapper js-like-button-wrapper'>
+          <button className={this.classString}>
+            {this.content}
+          </button>
+          <span className='js-count'>{count}</span>
+        </div>
+      )
+    } else {
+      this.element = (
       <button className={this.classString}>
         {this.content}
       </button>
     )
+    }
     if (this.disabled !== undefined) this.disable(this.element);
     return this;
   }

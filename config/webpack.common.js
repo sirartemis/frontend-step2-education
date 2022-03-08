@@ -1,5 +1,5 @@
 const {
-  path = require('path'),
+  webpack = require('webpack'),
   CopyWebpackPlugin = require('copy-webpack-plugin'),
   HtmlWebpackPlugin = require('html-webpack-plugin'),
   paths = require('./paths'),
@@ -30,6 +30,11 @@ module.exports = {
           noErrorOnMissing: true,
         },
       ],
+    }),
+    new webpack.ProvidePlugin({
+      $: 'jquery',
+      jQuery: 'jquery',
+      "window.jQuery": 'jquery',
     }),
 
     // Generates HTML files from a template
