@@ -1,0 +1,23 @@
+.big-button {
+  appearance: none;
+  border-radius:22px;
+  width: 320px;
+  height: 44px;
+  border: none;
+  background: linear-gradient(180deg, #BC9CFF 0%, #8BA4F9 100%);
+  color: #fff;
+  font-weight: bold;
+  text-transform: uppercase;
+  position: relative;
+  cursor: pointer;
+
+  &:after {
+    content: '';
+    display: inline-block;
+    background: url('../components/blocks/button/_big/arrow_forward.svg') no-repeat;
+    width: 44px;
+    height: 44px;
+    position: absolute;
+    left: 291px;
+  }
+}

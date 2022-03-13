@@ -1,0 +1,39 @@
+.button_with-border {
+  position: relative;
+  box-sizing: border-box;
+  width: 99px;
+  height: 44px;
+  text-transform: uppercase;
+  cursor: pointer;
+
+  $border: 2px;
+  color: $purple;
+  font-weight: bold;
+  background: white;
+  background-clip: padding-box; /* !importanté */
+  border: solid $border transparent; /* !importanté */
+  border-radius: 22px;
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0; bottom: 0; left: 0;
+    z-index: -1;
+    margin: -$border; /* !importanté */
+    border-radius: inherit; /* !importanté */
+    background: linear-gradient(to right, #BC9CFF, #8BA4F9);
+    transition: opacity .3s ease;
+  }
+
+  &:hover {
+    &:before {
+      opacity: 0.5;
+    }
+  }
+
+  &_disabled {
+    &:before {
+      opacity: 0.5;
+    }
+  }
+}

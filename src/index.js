@@ -30,8 +30,14 @@ const {
   expandableCheckboxList = new ExpandableCheckboxList(),
   advantagesList = new AdvantageList(),
   radioGroup = new RadioGroup('gender'),
-  button = new Button({ type: 'like', count: 12 }),
+  filledButton = new Button({ type: 'filled' }),
+  buttonWithBorder = new Button({ type: 'withBorder', disabled: true }),
+  defaultButton = new Button(),
   rateButton = new RateButton(),
+  bigButton = new Button({ type: 'big' }),
 } = {};
 
-document.body.append(rateButton.element);
+document.body.append(filledButton.element);
+document.body.append(buttonWithBorder.element);
+document.body.append(defaultButton.element);
+document.body.append(bigButton.element);

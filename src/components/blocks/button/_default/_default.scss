@@ -1,0 +1,19 @@
+.button {
+  appearance: none;
+  border: none;
+  background: transparent;
+  font-family: inherit;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: $purple;
+  transition: color .3s ease;
+  cursor: pointer;
+
+  &:hover {
+    color: $dark-shade-50;
+  }
+
+  &_disabled {
+    color: $dark-shade-50;
+  }
+}

@@ -20,6 +20,9 @@ export default class Button extends Block {
       'minus': { 'setMinusButton': [this.props.disabled] },
       'plus': { 'setPlusButton': [] },
       'like': { 'setLikeButton': [this.props.count] },
+      'withBorder': { 'setButtonWithBorder': [] },
+      'filled': { 'setFilledButton': [] },
+      'big': { 'setBigButton': [] },
     }
     this
       .applyProps(this.setters)
@@ -34,21 +37,40 @@ export default class Button extends Block {
     }
   }
 
-  setType(choose) {
+  setType(choose = 'default') {
     Object
       .entries(this.types)
       .map(([type, apply]) => choose === type && Object.entries(apply).map(([func,args]) => this[func](...args)));
     return this;
   }
 
-  setContent(content = 'button') {
+  setContent(content = 'click me') {
     this.content = content;
     return this;
   }
 
   setDisabled(disabled = false) {
-    if (disabled === true) this.disabled = true;
-    return this;
+    if (disabled === true) {
+      const blockName = Array.from(this.classList)[0];
+      this.classList.add(`${blockName}_disabled`);
+      this.disabled = true;
+      return this;
+    }
+  }
+
+  setFilledButton() {
+    this.classList.add('button_filled');
+    this.classList.add('js-button_filled');
+  }
+
+  setBigButton() {
+    this.classList.add('big-button');
+    this.classList.add('js-big-button');
+  }
+
+  setButtonWithBorder() {
+    this.classList.add('button_with-border');
+    this.classList.add('js-button-with-border');
   }
 
   setLikeButton(count = '0') {
@@ -92,7 +114,6 @@ export default class Button extends Block {
   }
 
   setDefaultButton() {
-    this.setContent('button');
     this.classList.add('button');
     this.classList.add('js-button');
     return this;
