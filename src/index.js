@@ -15,6 +15,7 @@ import RadioGroup from 'blocks/radio-group/Radio-group';
 import ToggleButton from 'blocks/toggle-button/Toggle-button';
 import Button from 'blocks/button/Button';
 import RateButton from 'blocks/rate-button/Rate-button';
+import Pagination from 'blocks/pagination/Pagination';
 
 const {
   dropdown = new Dropdown({ withoutBorder: true }),
@@ -35,9 +36,10 @@ const {
   defaultButton = new Button(),
   rateButton = new RateButton(),
   bigButton = new Button({ type: 'big' }),
+  pagination = new Pagination(),
 } = {};
 
 document.body.append(filledButton.element);
 document.body.append(buttonWithBorder.element);
 document.body.append(defaultButton.element);
-document.body.append(bigButton.element);
+document.body.append(pagination.element);
